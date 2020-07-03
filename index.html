@@ -2,7 +2,7 @@
 <html lang="en-us">
 
 <head>
-    <title>Day of Birth Finder</title>
+    <title>Breathe+ application</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +16,24 @@
     <meta name="twitter:card" content="img/icons/icon-96x96.png">
     <meta name="description" content="This script checks your Date of Birth and detects the Day of the Week you were born.">
 --> <!--Open Graph-->
+
+<link rel="icon" href="img/icons/favicon-16x16.png">
+<link rel="icon" href="img/icons/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="img/icons/pwa-icon-192.png" sizes="192x192">
+
+<link rel="manifest" href="/manifest.json">
+
+<link rel="mask-icon" href="img/icons/safari-pinned-tab.svg" color="#EE4327">
+<meta name="apple-mobile-web-app-title" content="Breathe+">
+<meta name="application-name" content="Breathe+">
+<meta name="msapplication-TileColor" content="#242221">
+<meta name="msapplication-TileImage" content="img/icons/mstile-144x144.png">
+<meta name="msapplication-config" content="img/icons/browserconfig.xml">
+
+<meta name="theme-color" content="#EE4327">
+
+
     <meta property="og:image" content="img/icons/icon-96x96.png">
     <meta property="og:title" content="Breathe+ application" />
     <meta name="author" content="Mobility in Life Applications TEAM">
@@ -882,17 +900,19 @@ drawProgress(pososto/100);
 
     if (metritis > thenumberofseconds)
     {
-     clearInterval(myVar);
+
+      myFunctionStopBreathe();
+//     clearInterval(myVar);
     
-     document.getElementById('myfrmforbreathing').style.visibility = 'hidden';
-             document.getElementById('myfrmforbreathing').style.display = 'none';
-        var tasections = document.getElementsByClassName('wsite-section');
+  //   document.getElementById('myfrmforbreathing').style.visibility = 'hidden';
+    //         document.getElementById('myfrmforbreathing').style.display = 'none';
+      //  var tasections = document.getElementsByClassName('wsite-section');
     
-                tasections[1].style.visibility = 'hidden';
-                tasections[1].style.display = 'none';
+        //        tasections[1].style.visibility = 'hidden';
+          //      tasections[1].style.display = 'none';
     
-                tasections[0].style.visibility = 'visible';
-                tasections[0].style.display = 'inline';
+            //    tasections[0].style.visibility = 'visible';
+              //  tasections[0].style.display = 'inline';
     
     }
      // var d = new Date();
