@@ -1,13 +1,13 @@
 {
-  "name": "Date of Birth Finder",
-  "short_name": "DOB Finder",
-  "theme_color": "#2dce89",
-  "background_color": "#ffffff",
+  "name": "Breathe+ application",
+  "short_name": "Breathe+",
+  "theme_color": "#EE4327",
+  "background_color": "#F9F9F9",
   "display": "standalone",
   "orientation": "portrait",
   "Scope": "/",
   "start_url": "/index.html?launcher=true",
-  "description": "This script checks your Date of Birth and detects the Day of the Week you were born.",
+  "description": "The Breathe+ application helps you do some deep breathing exercises!",
   "lang": "en-US",
   "icons": [
     {
