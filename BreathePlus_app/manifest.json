@@ -6,7 +6,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "Scope": "/",
-  "start_url": "BreathePlus_app/index.html?launcher=true",
+  "start_url": "../index.html?launcher=true",
   "description": "The Breathe+ application helps you do some deep breathing exercises!",
   "lang": "en-US",
   "icons": [
