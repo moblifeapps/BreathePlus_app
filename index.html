@@ -485,8 +485,9 @@
     </ul>
 
 
-<h1 class="display-4"  style="text-align: center; margin-top: 65px;  margin-bottom: 1px;">More.. </h1>
-<hr class="my-1" style="margin-top: 5px; margin-bottom: 1px;">
+    <h1 class="display-4"  style="text-align: center; margin-top: 65px;  font-size: 32px; margin-bottom: 1px;"><i class="material-icons">info_outline</i> More.. </h1>
+    <hr class="my-1" style="margin-top: 5px; margin-bottom: 1px;">
+    
      <ul class="collapsible popout" style="line-height: 20px; ">
       <li>
         <div class="collapsible-header"><i class="material-icons">help_outline</i>How-to use Breathe+ !</div>
@@ -539,7 +540,7 @@
       </span></div>
       </li>
     </ul>
-
+<div style="height: 300px;"></div>
                 </div>
                 <div id="myfrmforbreathing"> 
                 
@@ -949,7 +950,7 @@
            </footer>
     
         
-     <div class="fixed-action-btn direction-top active " style="bottom:  -15px; right:  0px;">
+     <div class="fixed-action-btn direction-top active " id="myredshare" style="bottom:  -15px; right:  0px; visibility: visible;">
           <a style=" width: 150px; height: 150px; bottom:  -15px; right:  -10px;" id="menu2" class="btn btn-floating btn-large red pulse" onclick="myFunctionOpenUrl('https://www.mlapplications.com/')"> 
              <img style="height:56px; margin-top: 30px;" src="https://www.mlapplications.com/files/theme/appdvdplayerplus/logoml.png" alt="the Mobility in Life Applications TEAM logo">
              </a>
@@ -1385,6 +1386,59 @@ drawProgress(pososto/100);
     
     </script>
     
+    <!-- mycode for detecting desktop and apply padding   -->
+
+<div class="myleftstck2" style="width: 300px; height: 250px; bottom:0px;" >
+  <script type="text/javascript" src="//lv.adocean.pl/files/js/aomini.js"></script>
+  <div data-ao-pid="nQkwBXO4JzLmGkHUQwgJDYIf4rjfTd3bJ8bDHF2mQGz.37" style="display: none;"></div>
+  <script type="text/javascript">
+      /* (c)AdOcean 2003-2019 */
+      /* PLACEMENT: Setup.Mlapplications.com.mlapplications.com_300x600_desktop_sticky */
+      (window['aomini'] || (window['aomini'] = [])).push({
+          cmd: 'display',
+          server: 'lv.adocean.pl',
+          id: 'nQkwBXO4JzLmGkHUQwgJDYIf4rjfTd3bJ8bDHF2mQGz.37',
+          consent: null
+      });
+  </script>
+  </div>
+  
+  
+  
+  <script>
+   
+  var isMobileDevice = window.navigator.userAgent.toLowerCase().includes("mobi");
+  
+  if (isMobileDevice==true)
+  {
+  // Nothing to do...
+  try {
+
+document.getElementById('myredshare').style.visibility = 'hidden';
+document.getElementById('myredshare').style.display = 'none';
+}
+catch(err) {
+//  document.getElementById("demo").innerHTML = err.message;
+}     
+
+   }
+   else
+   {
+  
+  var x = document.getElementsByClassName("container");
+   
+   
+   
+   var i;
+    for (i = 0; i < x.length; i++) {
+       x[i].style.paddingLeft = "280px";
+    // x[i].style.paddingLeft = "310px";
+    }
+  
+   //alert("It's false...It's desktop");
+   } 
+  // setTimeout(function () { displaytextafter(); }, 9000); 
+      </script>
 
 </body>
 
