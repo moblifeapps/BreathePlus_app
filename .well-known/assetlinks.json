@@ -2,9 +2,9 @@
   "relation": ["delegate_permission/common.handle_all_urls"],
   "target": {
     "namespace": "android_app",
-    "package_name": "com.mlapplications.apps.twa",
+    "package_name": "moblifeteam.breatheplus",
     "sha256_cert_fingerprints": [
-      "E5:A0:39:F3:C2:4E:53:89:70:F6:0F:27:79:19:93:9C:6A:86:73:EC:D7:26:FC:A3:C6:C4:18:C3:EC:17:F1:B1"
+      "8B:06:4D:AB:CC:1E:AF:AA:F1:68:37:FA:D6:7D:38:D6:39:0B:B6:80:0D:A0:1C:38:2B:0B:05:7A:C1:49:8B:A8"
     ]
   }
 }]
