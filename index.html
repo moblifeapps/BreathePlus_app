@@ -106,7 +106,7 @@
 
         function myFunctionfortitle() {
         var chromeH = window.outerHeight - window.innerHeight;
-        //  alert("Page is loaded and chromeH:" + chromeH + ",window.innerHeight:" + window.innerHeight + ",window.outerHeight:" + window.outerHeight);
+        //  //alert("Page is loaded and chromeH:" + chromeH + ",window.innerHeight:" + window.innerHeight + ",window.outerHeight:" + window.outerHeight);
           //document.title = "Paparia";
           
           var whttwrtttl = "[version:" + chromeH + "." +  window.innerHeight + "." + window.outerHeight +"] ";
@@ -152,7 +152,7 @@
   <div class="navbar-fixed">
   <nav style="background-color: rgb(13,71,161)">
     <div class="nav-wrapper">
-      <div class="row">
+      <div class="row" style="display: flex;">
         <div class="col s12">
           <a href="https://mlapplications.com/appbreatheplus" rel="noopener" target="_blank" class="brand-logo"><img style="margin-right:1px;""  src="img/myletters.svg" alt="Breathe+ application logo">
             <span class="hide-on-small-only">app</span>
@@ -171,7 +171,7 @@
 </div>
     <script>
         function openNav() {
-        //alert('here');
+        ////alert('here');
           document.getElementById('myOverlayNav').style.width = "100%";
         }
         
@@ -326,7 +326,104 @@
                 }
                 </style>
                 
-                <div id="myfrmforwelcome" style="margin-top: 65px; line-height: 11px; " >
+
+<div id="mycard_welcome" class="card medium" style="height: 500px; border-radius: 20px;
+ display: block;
+ margin-top:75px; 
+  background-color: rgba(42,42,42,0.3);
+  border-style: Solid;
+  border-color: rgba(42,42,42,0.75);
+  border-width: 1px;
+color: #ffffff;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    transition: box-shadow .25s;
+   
+    border: whitesmoke
+    
+   
+">
+             
+                <img style="max-height: 73px;
+
+margin-left: auto;
+    margin-right: auto;
+" src="img/icons/welcomewebappletters2.png">
+                
+
+<img style="margin-left: 1px; margin-right:1px; width: 80%; height: 3px; text-align: center; margin-top:5px; margin-bottom:5px;" src="img/icons/mylinefinal.svg" alt="myline">
+
+<div>       <span class="card-title" style="color: #d5d5d5; font-size:20px;">thanks for using the Breathe+ app. !</span>
+       </div>
+
+       <img style="margin-left: 1px; margin-right:1px; width: 80%; height: 3px; text-align: center; margin-top:5px; margin-bottom:5px;" src="img/icons/mylinefinal.svg" alt="myline">
+
+ <br> 
+<div>  
+ <table style="color: #ffffff; padding: 0px; font-size:14px; line-height:13px; text-align:center; width: auto; margin-left: auto; margin-right: auto">
+
+ 
+  <tbody><tr style="padding: 10px;">
+    <td  style="padding: 0px; width: 50px;">
+
+               <img style="width: 45px; height: 45px;
+
+margin-left: auto;
+    margin-right: auto;
+" src="img/icons/manflyingsmall.png">
+</td>
+ <td  style="padding: 1px;">
+    <td  style="padding: 0px;">
+
+               <span class="card-title" style="color: #ffffff; line-height:22px; text-align:center; font-size:20px;"> Fisrt-time use ..</span>
+</td>
+</tr>
+</tbody>
+</table>
+
+  
+     </div>
+ <br> 
+
+<img style="margin-right:1px; width: 90%; height: 3px; text-align:center; margin-top:15px; margin-bottom:5px;" src="img/icons/mylinefinal.svg" alt="myline">
+
+              <div class="card-content" >
+
+                <h2 class="wsite-content-title" style="text-align:center; font-size: 18px;"><font color="#ffffff">Don't forget to Install the app on your Browser!<br> <br> Click: "Add to Home Screen" </font><br><br>
+                  <font color="#ffffff"> .. instrunctions included .. </font><br>
+                  <br>
+                </h2>
+ 
+                <!--
+ <h2 class="wsite-content-title" style="text-align:center; font-size: 16px;"><font color="#ffffff">- Read useful info and tips for playing the Movies from your Blu-Ray discs.<br>- Read about the features that the application supports, but also what the app can't do!</font><br></h2>
+              -->     
+              
+              <a class="waves-effect waves-light btn-large " onclick="myFunctionShowNextRfrsh();" alt="Let's go.." style="background: #0076EE";><i class="material-icons left">check</i>OK </a>
+
+<!--  
+<table id="mycard_welcome_buttons" style="color: #ffffff; padding: 0px; font-size:14px; line-height:13px; text-align:center; width: auto; margin-left: auto; margin-right: auto; position:initial; visibility: visible">
+
+ 
+  <tbody><tr style="padding: 0px;">
+    <td  style="padding: 0px;">
+
+               <a class="waves-effect waves-light btn-large " onclick="myFunctionOpenUrl('https://www.mlapplications.com/hlpblurayplayer_1')" alt="Open Web Help.." style="background: #0076EE";><i class="material-icons left">check</i>Yes ..</a>
+</td>
+ <td  style="padding: 20px;">
+    <td  style="padding: 0px;">
+
+               <a class="waves-effect waves-light btn-large " onclick="myFunctionShowNext();" alt="Later.." style="background: #044690";><i class="material-icons left">clear</i>Later ..</a>
+</td>
+</tr>
+</tbody>
+</table>--> 
+              </div>
+              <div style="height: 300px;"></div>
+            </div>
+
+                
+                <div id="myfrmforwelcome" style="display: block; margin-top: 65px; line-height: 11px; " >
                     <h1 class="display-4"  style="text-align: center; margin-top: 65px;  margin-bottom: 1px;">Welcome!</h1>
                     <hr class="my-1" style="margin-top: 5px; margin-bottom: 1px;">
                     <p class="lead " style="text-align:center; line-height: 21px; ">Select the duration you want for your breathe. 
@@ -695,7 +792,7 @@
 
          <!--   <form>
 
-                <div class="alert alert-danger" role="alert">
+                <div class="//alert //alert-danger" role="//alert">
                     Enter all dates in numeric format!
                 </div>
 
@@ -750,7 +847,7 @@
 
 <!--
 <footer>
-    <div class="alert" style="background-color:#ddd;" role="alert">
+    <div class="//alert" style="background-color:#ddd;" role="//alert">
         <hr>
         <p class="mb-0 text-center">Developed by; <a href="https://bolajiayodeji.github.io" target="_blank">Bolaji
                 Ayodeji</a></p>
@@ -961,6 +1058,128 @@
  
 <script>
 
+var IsFirstTimeHere = 'false';
+
+function checkCookie() {
+  var user=getCookie("firsttimehere");
+  if (user != "") {
+  //  //alert("Welcome again " + user);
+IsFirstTimeHere = 'false';
+SetFirstTimeStorage();
+  } 
+  
+}
+
+function SetFirstTimeStorage()
+{
+	if(typeof(Storage) !== "undefined") 
+	{
+		localStorage.firsttimehere = '-';
+	}
+}
+
+function checkStorage() {
+	if(typeof(Storage) !== "undefined") 
+	{
+		if (localStorage.firsttimehere) 
+ 		{
+			IsFirstTimeHere = 'false';
+		}
+		else
+		{
+			IsFirstTimeHere = 'true';	
+		}
+	}
+  
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+
+function checkCookie() {
+  var user=getCookie("firsttimehere");
+  if (user != "") {
+  //  //alert("Welcome again " + user);
+IsFirstTimeHere = 'false';
+SetFirstTimeStorage();
+  } 
+  
+}
+function setCookie(cname,cvalue,exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires=" + d.toGMTString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function myFunctionShowNextRfrsh() {
+//alert('Here.....myFunctionShowNextRfrsh');
+document.getElementById('myfrmforwelcome').style.visibility = 'visible';
+   document.getElementById('myfrmforwelcome').style.display = 'inline';
+   document.getElementById('myfrmforbreathing').style.visibility = 'hidden';
+   document.getElementById('myfrmforbreathing').style.display = 'none';
+
+    document.getElementById('mycard_welcome').style.visibility = 'hidden';
+    document.getElementById('mycard_welcome').style.display = 'none';
+setCookie("firsttimehere", "-", 300);
+//agnoise = 'no';
+SetFirstTimeStorage();
+
+//alert('Here.....myFunctionShowNextRfrsh22');
+//var xxx= window.location.href; 
+
+//var xxx= document.location.protocol + '//' + document.location.host + document.location.pathname;
+//window.location.href = xxx;
+//window.location.reload(true);
+//window.location.href = 'http://www.mlapplications.com/dvdplayerapp';
+}
+
+function BaleStatusLoading() {
+  //alert("hereee");
+	checkCookie();
+	checkStorage();
+      //  openNav();
+
+if (IsFirstTimeHere == 'true')
+{
+  //alert("hereee1");
+   document.getElementById('myfrmforbreathing').style.visibility = 'hidden';
+   document.getElementById('myfrmforbreathing').style.display = 'none';
+  
+   document.getElementById('myfrmforwelcome').style.visibility = 'hidden';
+   document.getElementById('myfrmforwelcome').style.display = 'none';
+   document.getElementById('mycard_welcome').style.visibility = 'visible';
+   document.getElementById('mycard_welcome').style.display = 'block';
+}
+else
+{
+  //alert("hereee2");
+   document.getElementById('myfrmforwelcome').style.visibility = 'visible';
+   document.getElementById('myfrmforwelcome').style.display = 'inline';
+   document.getElementById('myfrmforbreathing').style.visibility = 'hidden';
+   document.getElementById('myfrmforbreathing').style.display = 'none';
+
+    document.getElementById('mycard_welcome').style.visibility = 'hidden';
+    document.getElementById('mycard_welcome').style.display = 'none';
+     
+
+}
+}
+
     var thenumberofseconds = 60;
     
     function myFunctionOpenUrl(theurl) {
@@ -1100,14 +1319,14 @@ drawProgress(pososto/100);
     var countDownDateNow;
     var countDownDate;
    // var countDownDateaaaa = new Date();
- //alert('countDownDateaaaa:'+countDownDateaaaa);
+ ////alert('countDownDateaaaa:'+countDownDateaaaa);
 
-// alert('countDownDate:'+countDownDate);
+// //alert('countDownDate:'+countDownDate);
 
     function StartTheBreatheNow()
     {
     try {
-    //alert('Here....');
+    ////alert('Here....');
     
     //var xxx = document.getElementById('myselection').
     
@@ -1115,7 +1334,7 @@ drawProgress(pososto/100);
     
     
     //var instance = M.FormSelect.getInstance('myselection');
-    //alert('Here2....');
+    ////alert('Here2....');
     console.log('Here2...');
     console.log('Here2a:...' + x.innerHTML);
     console.log('Here2b:...' + x[0].innerHTML);
@@ -1183,7 +1402,7 @@ drawProgress(pososto/100);
     
     
     //var tt = instance.getSelectedValues();
-    //alert('Here3....');
+    ////alert('Here3....');
     
             }
             catch(err) {
@@ -1214,19 +1433,25 @@ drawProgress(pososto/100);
     <script>
     
     $(document).ready(function(){
-    //alert('hi');
+    ////alert('hi');
+  
+
     HideTheBreatheNow();
+    
         $('select').formSelect();
         $('.collapsible').collapsible();
 
         var instance = M.Modal.getInstance('modal1');
-    //	alert('hi2');
+
+        BaleStatusLoading();
+    //	//alert('hi2');
       });
       
+    
      //document.addEventListener('DOMContentLoaded', function() {
-     //alert('hi');
+     ////alert('hi');
      //   var elems = document.querySelectorAll('select');
-    //	alert('length:' + elems.length);
+    //	//alert('length:' + elems.length);
       //  var instances = M.FormSelect.init(elems, options);
      // });  
     
@@ -1435,10 +1660,12 @@ catch(err) {
     // x[i].style.paddingLeft = "310px";
     }
   
-   //alert("It's false...It's desktop");
+   ////alert("It's false...It's desktop");
    } 
   // setTimeout(function () { displaytextafter(); }, 9000); 
       </script>
+
+
 
 </body>
 
