@@ -1243,6 +1243,7 @@ var json_url='https://apps.mlapplications.com/mydata/mysamplejson.json';
     console.log('Here2');
     xmlhttp.onreadystatechange = function() { 
       console.log('Here3');
+      console.log('Here3 and ' + this.status + " !!");
 
         if (this.readyState == 4 && this.status == 200) {//when a good response is given do this
           console.log('Here4');
