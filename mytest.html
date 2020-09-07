@@ -1255,10 +1255,11 @@ var json_url='https://apps.mlapplications.com/mydata/mysamplejson.json';
         }
     }
     //set the request destination and type
-    xmlhttp.open("POST", json_url, true);
+    xmlhttp.open("GET", json_url, true);
+  //////////  xmlhttp.open("POST", json_url, true);
     //set required headers for the request
     console.log('Here6');
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//////////    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     // send the request
     console.log('Here7');
    xmlhttp.send(); // when the request completes it will execute the code in onreadystatechange section
