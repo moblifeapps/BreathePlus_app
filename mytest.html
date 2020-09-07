@@ -170,6 +170,100 @@
   });
 </script>
 -->
+
+<style>
+
+.newmembers {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(155px, 175px));
+  grid-auto-rows: 370px;
+  grid-auto-flow: dense;
+  justify-content: center;
+  padding: 10px 10px 10px;
+  background-color: #c7c7c7;
+}
+
+.member {
+  background: rgba(255, 213, 70, 0.3);
+  border: 1px solid grey;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 3px 3px 3px grey;
+}
+
+.type {
+  color: #1f7665;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 5px 5px 0px;
+  text-align: center;
+}
+
+.year {
+  color: #1f7665;
+  font-weight: bold;
+  font-size: x-small;
+  margin: 0px 0px 0px;
+  text-align: center;
+}
+
+.thumb {
+  width: 85%;
+  min-height: 160px;
+  max-height: 160px;
+  min-width: 160x;
+  max-width: 160px;
+  object-position: center top;
+  -o-object-fit: cover;
+  object-fit: cover;
+  overflow: hidden;
+  border: 5px solid #fff;
+  border-radius: 4px;
+  box-shadow: 5px 5px 5px grey;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.thumb:hover {
+  position: relative;
+  top: 5px;
+  left: 5px;
+  background: #00CCCC;
+  -webkit-filter: grayscale(10%);
+  filter: grayscale(10%);
+}
+
+.membername {
+  color: #1f7665;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 10px 0px 0px;
+}
+
+.group {
+  color: #333333;
+  font-weight: bold;
+  margin: 0px 0px 5px;
+}
+
+.company {
+  color: #333333;
+  font-weight: normal;
+  margin: 0px 0px 5px;
+}
+
+.classification {
+  color: #333333;
+  font-weight: bold;
+  margin: 0px 0px 10px;
+  font-size: x-small;
+}
+
+.info {
+  margin: 10px;
+}
+</style>
 </head>
 
 <body  style= "display: flex; background-color: rgb(239,240,245);" >
@@ -925,6 +1019,102 @@ margin-left: auto;
                 </div>
             </form> -->
         </div>
+
+        <div class="newmembers">
+
+          <!-- Template for our posts -->
+          <script type="text/template" id="postTemplate">
+            <div class="member">
+              <p class="type"></p>
+              <p class="year">Year:</p>
+              <a class="memurl" href="">
+                <img class="thumb" alt="MEMBER PROFILE: " title="MEMBER PROFILE: " src="">
+              </a>
+              <!-- Replaced p  with div, can't nest p tags -->
+              <div class="info">
+                <p class="membername"></p>
+                <p class="group"></p>
+                <p class="company"></p>
+                <p class="classification"></p>
+              </div>
+        
+            </div>
+          </script>
+        
+        
+        
+        
+        </div>
+
+        <script>
+
+var postData = [{
+    "type": "* RENEWING *",
+    "year": "THREE",
+    "memurl": "https://example.com/smithville.html#5a2f81",
+    "memimgsrc": "https://example.com/smithville.html/u/#59e5c8.jpg",
+    "membername": "Andy Smith",
+    "group": "Smithville",
+    "company": "Andys Lawn",
+    "classification": "Gardening"
+  },
+  {
+    "type": "* RENEWING *",
+    "year": "FOUR",
+    "memurl": "https://example.com/brownsville.html#5a2f86",
+    "memimgsrc": "https://example.com/brownsville.html/u/#5a2f86.jpg",
+    "membername": "Dave Brown",
+    "group": "Brownsville",
+    "company": "Daves Paint",
+    "classification": "Paint"
+  },
+  {
+    "type": "* NEW *",
+    "year": "ONE",
+    "memurl": "https://example.com/applegate.html#5b3a51",
+    "memimgsrc": "https://example.com/applegate.html/u/#5b3a51.jpg",
+    "membername": "May Apple",
+    "group": "Applegate",
+    "company": "Marys Conserves",
+    "classification": "Canning"
+  }
+];
+
+function append_json(data) {
+  //Set Up the template
+  var s = $("#postTemplate")[0].innerHTML.trim();
+  var holder = document.createElement('div');
+  holder.innerHTML = s;
+  var template = holder.childNodes;
+
+  var member = document.getElementById('newmembers');
+  data.forEach(function(object) {
+
+    //Clone Template
+    var newItem = $(template).clone();
+
+    //Populate it
+    $(newItem).find(".type").html(object.type);
+    $(newItem).find(".year").html($(newItem).find(".year").html() + " " + object.year);
+    $(newItem).find(".memurl").attr("href", object.memurl);
+    var img = $(newItem).find(".thumb")
+    $(img).attr("src", object.memimgsrc).attr("alt", $(img).attr("alt") + object.membername + " " + "etc")
+      .attr("title", $(img).attr("title") + object.membername + " finish this off");
+    $(newItem).find(".membername").html(object.membername);
+    $(newItem).find(".group").html(object.group);
+    $(newItem).find(".company").html(object.company);
+    $(newItem).find(".classification").html(object.classification);
+    //Append it
+
+    $(".newmembers").append(newItem);
+
+  });
+}
+
+$("document").ready(function() {
+  append_json(postData);
+});
+        </script>
     </div>
 
 <!--
@@ -980,9 +1170,9 @@ margin-left: auto;
   --> 
            </footer>
     
-        <div style="visibility: visible; background-color: green; width: 100%; height: 100px; position: fixed; bottom:  -10px;  right:  0px; " >
+        <div style="visibility: visible; background-color: #0D2E64; width: 100%; height: 100px; position: fixed; bottom:  -10px;  right:  0px; " >
           <div style="height:10px;"></div>
-          <table class="centered" style="color: #ffffff; font-size:14px; line-height:14px; text-align:center; width: auto; margin-left: auto;  margin-right: 140px; padding-right: 140px;">
+          <table class="centered" style="color: #ffffff; font-size:14px; line-height:14px; text-align:center; width: auto; margin-left: auto;  margin-right: 140px; ">
             <thead>
                 <tr style="padding:0px; border-bottom: 0px;">
                 
