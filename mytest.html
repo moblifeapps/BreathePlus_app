@@ -1020,6 +1020,34 @@ margin-left: auto;
             </form> -->
         </div>
 
+
+
+        <div class="mygames">
+
+          <!-- Template for our posts -->
+          <script type="text/template" id="postTemplate">
+            <div class="title">
+              <p class="title"></p>
+              <p class="title">Title:</p>
+              <a class="url" href="">
+                <img class="thumb" alt="asset: " title="asset: " src="">
+              </a>
+              <!-- Replaced p  with div, can't nest p tags -->
+              <div class="info">
+                <p class="description"></p>
+              <!--  <p class="group"></p>
+                <p class="company"></p>
+                <p class="classification"></p> -->
+              </div>
+        
+            </div>
+          </script>
+        
+        
+        
+        
+        </div>
+
         <div class="newmembers">
 
           <!-- Template for our posts -->
@@ -1047,6 +1075,8 @@ margin-left: auto;
         </div>
 
         <script>
+
+
 /*
 var postData = [{
     "type": "* RENEWING *",
@@ -1199,7 +1229,39 @@ $("document").ready(function() {
 });
 
 
+
 function append_json(data) {
+  //Set Up the template
+  var s = $("#postTemplate")[0].innerHTML.trim();
+  var holder = document.createElement('div');
+  holder.innerHTML = s;
+  var template = holder.childNodes;
+
+  var member = document.getElementById('mygames');
+  data.forEach(function(object) {
+
+    //Clone Template
+    var newItem = $(template).clone();
+
+    //Populate it
+    $(newItem).find(".title").html(object.title);
+   // $(newItem).find(".year").html($(newItem).find(".year").html() + " " + object.year);
+    $(newItem).find(".url").attr("href", object.url);
+    var img = $(newItem).find(".thumb")
+    $(img).attr("src", object.memimgsrc).attr("alt", $(img).attr("alt") + object.membername + " " + "etc")
+      .attr("title", $(img).attr("title") + object.membername + " finish this off");
+  //  $(newItem).find(".membername").html(object.membername);
+  //  $(newItem).find(".group").html(object.group);
+  //  $(newItem).find(".company").html(object.company);
+    $(newItem).find(".description").html(object.description);
+    //Append it
+
+    $(".mygames").append(newItem);
+
+  });
+}
+
+function append_jsonOLD(data) {
   //Set Up the template
   var s = $("#postTemplate")[0].innerHTML.trim();
   var holder = document.createElement('div');
@@ -1232,6 +1294,40 @@ function append_json(data) {
 
 
 function get_json_data(){
+  alert('here 1');
+    // Relative URL of external json file
+ //   var json_url = 'example.json';
+var json_url='https://apps.mlapplications.com/mydata/mypuzzle_desktop1.json';
+
+    //Build the XMLHttpRequest (aka AJAX Request)
+    xmlhttp = new XMLHttpRequest();
+
+    console.log('Here2');
+    xmlhttp.onreadystatechange = function() { 
+      console.log('Here3');
+      console.log('Here3 and ' + this.status + " !!");
+
+        if (this.readyState == 4 && this.status == 200) {//when a good response is given do this
+          console.log('Here4');
+
+            var data = JSON.parse(this.responseText); // convert the response to a json object
+            console.log('Here5');
+
+            append_json(data);// pass the json object to the append_json function
+        }
+    }
+    //set the request destination and type
+    xmlhttp.open("GET", json_url, true);
+  //////////  xmlhttp.open("POST", json_url, true);
+    //set required headers for the request
+    console.log('Here6');
+//////////    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // send the request
+    console.log('Here7');
+   xmlhttp.send(); // when the request completes it will execute the code in onreadystatechange section
+}
+
+function get_json_dataOLD(){
   alert('here 1');
     // Relative URL of external json file
  //   var json_url = 'example.json';
