@@ -1216,7 +1216,7 @@ $("document").ready(function() {
  // To parakatw douleuei !!!
  // append_json(postData);
  get_json_data();
- 
+
  // Example on: https://stackoverflow.com/questions/52376527/populate-grid-div-p-with-json-data-file
 
   //first add an event listener for page load
@@ -1224,25 +1224,35 @@ $("document").ready(function() {
 
 //this function is in the event listener and will execute on page load
 function get_json_data(){
+  alert('here 1');
     // Relative URL of external json file
  //   var json_url = 'example.json';
 var json_url='https://apps.mlapplications.com/mydata/mysamplejson.json';
 
     //Build the XMLHttpRequest (aka AJAX Request)
     xmlhttp = new XMLHttpRequest();
+
+    console.log('Here2');
     xmlhttp.onreadystatechange = function() { 
+      console.log('Here3');
+
         if (this.readyState == 4 && this.status == 200) {//when a good response is given do this
+          console.log('Here4');
 
             var data = JSON.parse(this.responseText); // convert the response to a json object
+            console.log('Here5');
+
             append_json(data);// pass the json object to the append_json function
         }
     }
     //set the request destination and type
     xmlhttp.open("POST", json_url, true);
     //set required headers for the request
+    console.log('Here6');
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     // send the request
-    xmlhttp.send(); // when the request completes it will execute the code in onreadystatechange section
+    console.log('Here7');
+   xmlhttp.send(); // when the request completes it will execute the code in onreadystatechange section
 }
 
 
