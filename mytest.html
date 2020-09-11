@@ -1623,6 +1623,10 @@ function append_json(data) {
     $(img).attr("src", object.memimgsrc).attr("alt", $(img).attr("alt") + object.membername + " " + "etc")
   //////////////    .attr("grid-item-title", $(img).attr("grid-item-title") + object.membername + " finish this off");
   
+  
+  $(newItem).find(".grid-item-description").html(object.description);
+  
+  
       console.log('Einai for each __4__ !!');
 
   //  $(newItem).find(".membername").html(object.membername);
