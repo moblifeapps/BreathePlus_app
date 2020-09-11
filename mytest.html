@@ -319,6 +319,9 @@ margin: .6818rem;
  
  <script>
 
+var x = document.getElementsByClassName("container");
+x.style.paddingLeft = "310px";
+x.style.marginLeft="310px";
 var myx = "User-agent header sent: " + navigator.userAgent;
 alert(myx);
 //document.getElementById("papariaaaa").innerHTML = myx; // days + "d " + hours + "h "
@@ -517,7 +520,27 @@ li {
 
 
 
-<div class="grid-container" style="margin-top: 100px;">
+<div class="grid-container" id="mygmcontainer" style="margin-top: 100px;">
+
+
+          <!-- Template for our posts -->
+          <script type="text/template" id="mygamepostTemplate">
+            <div class="grid-item">
+ 		          <div>
+  		          <div>
+  			          <span><img class="type mygameimage" src="https://img.gamedistribution.com/c5942ec4d034485fb21c9223744e7281-512x384.jpeg" alt="Super RunCraft" ></span>
+      		      </div> 
+     		        <div class="content">
+       		        <div class="grid-item-title">Super RunCraft</div>
+     	            <span class="grid-item-description"  >Super RunCraft  is a wonderful 3D Run Game, run through a long minecraft land to collect rows of golden coins, number of special items such as Hoveboard along your running lane and avoid the obstacles in your way. </span>
+            		</div>
+	          </div>
+          </div>
+          </script>
+
+
+
+<!--
   <div class="grid-item">
     <div>
       <div>
@@ -582,7 +605,7 @@ li {
 </div>
 
   </div>
-  
+-->
 
    
 </div>
@@ -1539,6 +1562,38 @@ $("document").ready(function() {
 
 
 function append_json(data) {
+  //Set Up the template
+  var s = $("#mygamepostTemplate")[0].innerHTML.trim();
+  var holder = document.createElement('div');
+  holder.innerHTML = s;
+  var template = holder.childNodes;
+
+  var member = document.getElementById('mygmcontainer');
+  data.forEach(function(object) {
+
+    //Clone Template
+    var newItem = $(template).clone();
+
+    //Populate it
+    $(newItem).find(".grid-item-title").html(object.title);
+   // $(newItem).find(".year").html($(newItem).find(".year").html() + " " + object.year);
+    $(newItem).find(".url").attr("href", object.url);
+    var img = $(newItem).find(".mygameimage")
+    $(img).attr("src", object.memimgsrc).attr("alt", $(img).attr("alt") + object.membername + " " + "etc")
+      .attr("grid-item-title", $(img).attr("grid-item-title") + object.membername + " finish this off");
+  //  $(newItem).find(".membername").html(object.membername);
+  //  $(newItem).find(".group").html(object.group);
+  //  $(newItem).find(".company").html(object.company);
+ //   $(newItem).find(".description").html(object.description);
+    //Append it
+
+    $(".mygmcontainer").append(newItem);
+
+  });
+}
+
+
+function append_jsonGOOD(data) {
   //Set Up the template
   var s = $("#postTemplate")[0].innerHTML.trim();
   var holder = document.createElement('div');
