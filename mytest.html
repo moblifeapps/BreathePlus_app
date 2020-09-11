@@ -1598,11 +1598,23 @@ function append_json(data) {
    console.log('Einai for each __2__ !!..object.title:' + object.title);
     $(newItem).find(".url").attr("href", object.url);
 
+    console.log('Einai url:' + object.url);
+    console.log('Einai width:' + object.width);
+    console.log('Einai height:' + object.height);
+        
+    var theassets = object.assetList;
+    thenumberofseconds.forEach(function (aaaa) {
+      console.log('Meeee:' + aaaa.name);
+    });
+
+    console.log('Einai url:' + object.url);
+
+    console.log('Einai for each __3__ !!');
     console.log('Einai for each __3__ !!');
     var img = $(newItem).find(".mygameimage");
-    console.log('Einai: '+ object.memimgsrc);
+    console.log('Einai: '+ object.assetList.name[0]);
    
-    $(img).attr("src", object.memimgsrc);
+    $(img).attr("src", object.assetList.name[0]);
     $(img).attr("src", object.memimgsrc).attr("alt", $(img).attr("alt") + object.membername + " " + "etc")
   //////////////    .attr("grid-item-title", $(img).attr("grid-item-title") + object.membername + " finish this off");
   
