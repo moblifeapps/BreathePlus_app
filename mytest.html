@@ -1562,6 +1562,10 @@ $("document").ready(function() {
 
 
 function append_json(data) {
+
+
+  console.log('Einai sto append json');
+
   //Set Up the template
   var s = $("#mygamepostTemplate")[0].innerHTML.trim();
   var holder = document.createElement('div');
@@ -1571,16 +1575,23 @@ function append_json(data) {
   var member = document.getElementById('mygmcontainer');
   data.forEach(function(object) {
 
+    console.log('Einai for each __1__ !!');
     //Clone Template
     var newItem = $(template).clone();
 
     //Populate it
     $(newItem).find(".grid-item-title").html(object.title);
    // $(newItem).find(".year").html($(newItem).find(".year").html() + " " + object.year);
+   console.log('Einai for each __2__ !!');
     $(newItem).find(".url").attr("href", object.url);
+
+    console.log('Einai for each __3__ !!');
     var img = $(newItem).find(".mygameimage")
     $(img).attr("src", object.memimgsrc).attr("alt", $(img).attr("alt") + object.membername + " " + "etc")
       .attr("grid-item-title", $(img).attr("grid-item-title") + object.membername + " finish this off");
+  
+      console.log('Einai for each __4__ !!');
+
   //  $(newItem).find(".membername").html(object.membername);
   //  $(newItem).find(".group").html(object.group);
   //  $(newItem).find(".company").html(object.company);
