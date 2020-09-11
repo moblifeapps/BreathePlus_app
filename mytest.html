@@ -1603,7 +1603,12 @@ function append_json(data) {
     console.log('Einai height:' + object.height);
         
     var theassets = object.assetList;
+    var telikostr ="";
     theassets.forEach(function (aaaa) {
+      if (telikostr.length ==0) 
+      {
+        telikostr = aaaa.name;
+      }
       console.log('Meeee:' + aaaa.name);
     });
 
@@ -1612,9 +1617,9 @@ function append_json(data) {
     console.log('Einai for each __3__ !!');
     console.log('Einai for each __3__ !!');
     var img = $(newItem).find(".mygameimage");
-    console.log('Einai: '+ object.assetList.name[0]);
+//    console.log('Einai: '+ object.assetList.name[0]);
    
-    $(img).attr("src", object.assetList.name[0]);
+    $(img).attr("src", telikostr);
     $(img).attr("src", object.memimgsrc).attr("alt", $(img).attr("alt") + object.membername + " " + "etc")
   //////////////    .attr("grid-item-title", $(img).attr("grid-item-title") + object.membername + " finish this off");
   
