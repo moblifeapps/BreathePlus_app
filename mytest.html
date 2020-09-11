@@ -520,9 +520,20 @@ li {
 
 
 
-<div class="grid-container" id="mygmcontainer" style="margin-top: 100px;">
-
-
+<div class="grid-container mygmcontainer" id="mygmcontainer" style="margin-top: 100px;">
+<!--
+  <div class="grid-item">
+    <div>
+      <div>
+      
+        <span  ><img class="type mygameimage" src="https://img.gamedistribution.com/c5942ec4d034485fb21c9223744e7281-512x384.jpeg" alt="Super RunCraft" ></span>
+      </div> 
+      <div class="content">
+        <div class="grid-item-title">Super RunCraft</div>
+        <span class="grid-item-description"  >Super RunCraft  is a wonderful 3D Run Game, run through a long minecraft land to collect rows of golden coins, number of special items such as Hoveboard along your running lane and avoid the obstacles in your way. </span>
+  </div>
+</div>
+-->
           <!-- Template for our posts -->
           <script type="text/template" id="mygamepostTemplate">
             <div class="grid-item">
@@ -1584,12 +1595,15 @@ function append_json(data) {
     //Populate it
     $(newItem).find(".grid-item-title").html(object.title);
    // $(newItem).find(".year").html($(newItem).find(".year").html() + " " + object.year);
-   console.log('Einai for each __2__ !!..object.title:' + object.title.String);
+   console.log('Einai for each __2__ !!..object.title:' + object.title);
     $(newItem).find(".url").attr("href", object.url);
 
     console.log('Einai for each __3__ !!');
-   ///////////////// var img = $(newItem).find(".mygameimage");
-  ///////////////////////  $(img).attr("src", object.memimgsrc).attr("alt", $(img).attr("alt") + object.membername + " " + "etc")
+    var img = $(newItem).find(".mygameimage");
+    console.log('Einai: '+ object.memimgsrc);
+   
+    $(img).attr("src", object.memimgsrc);
+    $(img).attr("src", object.memimgsrc).attr("alt", $(img).attr("alt") + object.membername + " " + "etc")
   //////////////    .attr("grid-item-title", $(img).attr("grid-item-title") + object.membername + " finish this off");
   
       console.log('Einai for each __4__ !!');
