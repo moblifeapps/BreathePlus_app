@@ -521,6 +521,239 @@ li {
 
 
 
+<div class="row" style="display: flow-root;">
+  <style>
+          /* Countdown-bar General */
+          div.countdown-bar {
+              width: 0;
+              height: 20px;
+              margin-bottom: 20px;
+              border: 1px solid rgb(233, 8, 8);
+              background-color: rgba(189, 184, 184, 0.788);
+          }
+          
+          /* Loader */
+          div.countdown-bar div:nth-of-type(1) {    
+              width: 0; 
+              height: 100%
+          }
+          
+          /* Timer */
+          div.countdown-bar div:nth-of-type(2) {    
+              width: 100%; 
+              height: 100%
+          }
+          
+          
+          #animation {
+            height: 100px;
+            width: 200px;
+          }
+          #animation ul {
+            position: relative;
+            text-align: center;
+            width: 100%;
+          }
+          #animation li {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            opacity: 0;
+            padding: 10px;
+          }
+          #animation li:nth-of-type(1) {
+            animation: fadein 16s ease-in-out infinite;
+          }
+          #animation li:nth-of-type(2) {
+            animation: fadein 16s ease-in-out 4s infinite;
+          }
+          #animation li:nth-of-type(3) {
+            animation: fadein 16s ease-in-out 8s infinite;
+          }
+          #animation li:nth-of-type(4) {
+            animation: fadein 16s ease-in-out 12s infinite;
+          }
+          @keyframes fadein {
+            0% {
+              opacity: 0;
+            }
+            6.25% { /* 3s for fade in */
+              opacity: 1;
+            }
+            26.75% { /* roughly 10s for stay as-is */
+              opacity: 1;
+            }
+            33% { /* 3s for fade out */
+              opacity: 0;
+            }
+          }
+          
+          .mypresentationdiv
+          {
+          overflow: hidden;
+            display: flex;
+           position: relative;
+            align-items: center;
+            justify-content: center;
+            height: 500px;
+            background: #eff0f5;
+            width: 500px;
+            position: relative;
+            left: 10px;
+            top: 10px;
+          }
+          
+          
+          .watch-face {
+            position: relative;
+            animation: pulse 4s cubic-bezier(0.5, 0, 0.5, 1) infinite alternate;
+            animation-name: pulse, fix;
+            
+          }
+          
+          
+          .myinhale {
+            
+            border-radius: 50%;
+            
+            background: #3c6c92;
+            mix-blend-mode: screen;
+            animation: circle 4s infinite alternate;
+          }
+          
+          .circle {
+            position: absolute;
+            margin: -4em;
+            width: 8em;
+            height: 8em;
+            border-radius: 50%;
+            transform: rotate(var(--ca));
+            background: #3c6c92;
+            mix-blend-mode: screen;
+            animation: circle 4s infinite alternate;
+          }
+          @supports not (mix-blend-mode: screen) {
+            .circle {
+              opacity: 0.75;
+            }
+          }
+          
+          @keyframes circle {
+            to {
+              transform: rotate(var(--ca)) translate(4em);
+            }
+          }
+          @keyframes pulse {
+            0% {
+              transform: scale(0.15) rotate(0.5turn);
+            }
+          }
+          @-moz-keyframes fix {
+            to {
+              filter: blur(0);
+            }
+          }
+          </style>
+          
+
+<div id="mycard_welcome" class="card medium" style="height: 300px; border-radius: 20px;
+display: block;
+margin-top:75px; 
+background-color: rgba(42,42,42,0.3);
+border-style: Solid;
+border-color: rgba(42,42,42,0.75);
+border-width: 1px;
+color: #ffffff;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+transition: box-shadow .25s;
+
+border: whitesmoke
+
+
+">
+       
+          <img style="max-height: 73px;
+
+margin-left: auto;
+margin-right: auto;
+" src="img/icons/welcomewebappletters2.png">
+          
+
+<img style="margin-left: 1px; margin-right:1px; width: 80%; height: 3px; text-align: center; margin-top:5px; margin-bottom:5px;" src="img/icons/mylinefinal.svg" alt="myline">
+
+<div>       <span class="card-title" style="color: #d5d5d5; font-size:20px;">thanks for using the Online Games+ Puzzle !</span>
+ </div>
+
+ <img style="margin-left: 1px; margin-right:1px; width: 80%; height: 3px; text-align: center; margin-top:5px; margin-bottom:5px;" src="img/icons/mylinefinal.svg" alt="myline">
+
+<br> 
+<div>  
+<table style="color: #ffffff; padding: 0px; font-size:14px; line-height:13px; text-align:center; width: auto; margin-left: auto; margin-right: auto">
+
+
+<tbody><tr style="padding: 10px;">
+<td  style="padding: 0px; width: 50px;">
+
+         <img style="width: 45px; height: 45px;
+
+margin-left: auto;
+margin-right: auto;
+" src="img/icons/manflyingsmall.png">
+</td>
+<td  style="padding: 1px;">
+<td  style="padding: 0px;">
+
+         <span class="card-title" style="color: #ffffff; line-height:22px; text-align:center; font-size:20px;"> Games Loaded  ..</span>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+<br> 
+
+<img style="margin-right:1px; width: 90%; height: 3px; text-align:center; margin-top:5px; margin-bottom:5px;" src="img/icons/mylinefinal.svg" alt="myline">
+
+        <div class="card-content" style="height:auto;" >
+
+          <h2 class="wsite-content-title" style="text-align:center; font-size: 18px;"><font color="#ffffff">Press on any of the games above to start immediately gameplay!<br> 
+            <span color="#ffffff"> .. instrunctions included .. </span><br>
+            <br>
+          </h2>
+
+          <!--
+<h2 class="wsite-content-title" style="text-align:center; font-size: 16px;"><font color="#ffffff">- Read useful info and tips for playing the Movies from your Blu-Ray discs.<br>- Read about the features that the application supports, but also what the app can't do!</font><br></h2>
+        -->     
+        
+        <a class="waves-effect waves-light btn-large " onclick="myFunctionShowNextRfrsh();" alt="Let's go.." style="background: #0076EE";><i class="material-icons left">check</i>OK </a>
+
+<!--  
+<table id="mycard_welcome_buttons" style="color: #ffffff; padding: 0px; font-size:14px; line-height:13px; text-align:center; width: auto; margin-left: auto; margin-right: auto; position:initial; visibility: visible">
+
+
+<tbody><tr style="padding: 0px;">
+<td  style="padding: 0px;">
+
+         <a class="waves-effect waves-light btn-large " onclick="myFunctionOpenUrl('https://www.mlapplications.com/hlpblurayplayer_1')" alt="Open Web Help.." style="background: #0076EE";><i class="material-icons left">check</i>Yes ..</a>
+</td>
+<td  style="padding: 20px;">
+<td  style="padding: 0px;">
+
+         <a class="waves-effect waves-light btn-large " onclick="myFunctionShowNext();" alt="Later.." style="background: #044690";><i class="material-icons left">clear</i>Later ..</a>
+</td>
+</tr>
+</tbody>
+</table>--> 
+        </div>
+        <div style="height: 300px;"></div>
+      </div>
+
+
+</div>
 
 
 <div class="grid-container mygmcontainer" id="mygmcontainer" style="margin-top: 100px;">
@@ -669,237 +902,7 @@ li {
       
         <div class="row" style="display: flow-root;">
 
-            <style>
-                /* Countdown-bar General */
-                div.countdown-bar {
-                    width: 0;
-                    height: 20px;
-                    margin-bottom: 20px;
-                    border: 1px solid rgb(233, 8, 8);
-                    background-color: rgba(189, 184, 184, 0.788);
-                }
-                
-                /* Loader */
-                div.countdown-bar div:nth-of-type(1) {    
-                    width: 0; 
-                    height: 100%
-                }
-                
-                /* Timer */
-                div.countdown-bar div:nth-of-type(2) {    
-                    width: 100%; 
-                    height: 100%
-                }
-                
-                
-                #animation {
-                  height: 100px;
-                  width: 200px;
-                }
-                #animation ul {
-                  position: relative;
-                  text-align: center;
-                  width: 100%;
-                }
-                #animation li {
-                  position: absolute;
-                  left: 0;
-                  top: 0;
-                  width: 100%;
-                  opacity: 0;
-                  padding: 10px;
-                }
-                #animation li:nth-of-type(1) {
-                  animation: fadein 16s ease-in-out infinite;
-                }
-                #animation li:nth-of-type(2) {
-                  animation: fadein 16s ease-in-out 4s infinite;
-                }
-                #animation li:nth-of-type(3) {
-                  animation: fadein 16s ease-in-out 8s infinite;
-                }
-                #animation li:nth-of-type(4) {
-                  animation: fadein 16s ease-in-out 12s infinite;
-                }
-                @keyframes fadein {
-                  0% {
-                    opacity: 0;
-                  }
-                  6.25% { /* 3s for fade in */
-                    opacity: 1;
-                  }
-                  26.75% { /* roughly 10s for stay as-is */
-                    opacity: 1;
-                  }
-                  33% { /* 3s for fade out */
-                    opacity: 0;
-                  }
-                }
-                
-                .mypresentationdiv
-                {
-                overflow: hidden;
-                  display: flex;
-                 position: relative;
-                  align-items: center;
-                  justify-content: center;
-                  height: 500px;
-                  background: #eff0f5;
-                  width: 500px;
-                  position: relative;
-                  left: 10px;
-                  top: 10px;
-                }
-                
-                
-                .watch-face {
-                  position: relative;
-                  animation: pulse 4s cubic-bezier(0.5, 0, 0.5, 1) infinite alternate;
-                  animation-name: pulse, fix;
-                  
-                }
-                
-                
-                .myinhale {
-                  
-                  border-radius: 50%;
-                  
-                  background: #3c6c92;
-                  mix-blend-mode: screen;
-                  animation: circle 4s infinite alternate;
-                }
-                
-                .circle {
-                  position: absolute;
-                  margin: -4em;
-                  width: 8em;
-                  height: 8em;
-                  border-radius: 50%;
-                  transform: rotate(var(--ca));
-                  background: #3c6c92;
-                  mix-blend-mode: screen;
-                  animation: circle 4s infinite alternate;
-                }
-                @supports not (mix-blend-mode: screen) {
-                  .circle {
-                    opacity: 0.75;
-                  }
-                }
-                
-                @keyframes circle {
-                  to {
-                    transform: rotate(var(--ca)) translate(4em);
-                  }
-                }
-                @keyframes pulse {
-                  0% {
-                    transform: scale(0.15) rotate(0.5turn);
-                  }
-                }
-                @-moz-keyframes fix {
-                  to {
-                    filter: blur(0);
-                  }
-                }
-                </style>
-                
-
-<div id="mycard_welcome" class="card medium" style="height: 500px; border-radius: 20px;
- display: block;
- margin-top:75px; 
-  background-color: rgba(42,42,42,0.3);
-  border-style: Solid;
-  border-color: rgba(42,42,42,0.75);
-  border-width: 1px;
-color: #ffffff;
-    font-size: 14px;
-    line-height: 16px;
-    text-align: center;
-    transition: box-shadow .25s;
-   
-    border: whitesmoke
-    
-   
-">
-             
-                <img style="max-height: 73px;
-
-margin-left: auto;
-    margin-right: auto;
-" src="img/icons/welcomewebappletters2.png">
-                
-
-<img style="margin-left: 1px; margin-right:1px; width: 80%; height: 3px; text-align: center; margin-top:5px; margin-bottom:5px;" src="img/icons/mylinefinal.svg" alt="myline">
-
-<div>       <span class="card-title" style="color: #d5d5d5; font-size:20px;">thanks for using the Breathe+ app. !</span>
-       </div>
-
-       <img style="margin-left: 1px; margin-right:1px; width: 80%; height: 3px; text-align: center; margin-top:5px; margin-bottom:5px;" src="img/icons/mylinefinal.svg" alt="myline">
-
- <br> 
-<div>  
- <table style="color: #ffffff; padding: 0px; font-size:14px; line-height:13px; text-align:center; width: auto; margin-left: auto; margin-right: auto">
-
- 
-  <tbody><tr style="padding: 10px;">
-    <td  style="padding: 0px; width: 50px;">
-
-               <img style="width: 45px; height: 45px;
-
-margin-left: auto;
-    margin-right: auto;
-" src="img/icons/manflyingsmall.png">
-</td>
- <td  style="padding: 1px;">
-    <td  style="padding: 0px;">
-
-               <span class="card-title" style="color: #ffffff; line-height:22px; text-align:center; font-size:20px;"> Fisrt-time use ..</span>
-</td>
-</tr>
-</tbody>
-</table>
-
-  
-     </div>
- <br> 
-
-<img style="margin-right:1px; width: 90%; height: 3px; text-align:center; margin-top:15px; margin-bottom:5px;" src="img/icons/mylinefinal.svg" alt="myline">
-
-              <div class="card-content" >
-
-                <h2 class="wsite-content-title" style="text-align:center; font-size: 18px;"><font color="#ffffff">Don't forget to Install the app on your Browser!<br> <br> Click: "Add to Home Screen" </font><br><br>
-                  <font color="#ffffff"> .. instrunctions included .. </font><br>
-                  <br>
-                </h2>
- 
-                <!--
- <h2 class="wsite-content-title" style="text-align:center; font-size: 16px;"><font color="#ffffff">- Read useful info and tips for playing the Movies from your Blu-Ray discs.<br>- Read about the features that the application supports, but also what the app can't do!</font><br></h2>
-              -->     
               
-              <a class="waves-effect waves-light btn-large " onclick="myFunctionShowNextRfrsh();" alt="Let's go.." style="background: #0076EE";><i class="material-icons left">check</i>OK </a>
-
-<!--  
-<table id="mycard_welcome_buttons" style="color: #ffffff; padding: 0px; font-size:14px; line-height:13px; text-align:center; width: auto; margin-left: auto; margin-right: auto; position:initial; visibility: visible">
-
- 
-  <tbody><tr style="padding: 0px;">
-    <td  style="padding: 0px;">
-
-               <a class="waves-effect waves-light btn-large " onclick="myFunctionOpenUrl('https://www.mlapplications.com/hlpblurayplayer_1')" alt="Open Web Help.." style="background: #0076EE";><i class="material-icons left">check</i>Yes ..</a>
-</td>
- <td  style="padding: 20px;">
-    <td  style="padding: 0px;">
-
-               <a class="waves-effect waves-light btn-large " onclick="myFunctionShowNext();" alt="Later.." style="background: #044690";><i class="material-icons left">clear</i>Later ..</a>
-</td>
-</tr>
-</tbody>
-</table>--> 
-              </div>
-              <div style="height: 300px;"></div>
-            </div>
-
-                
                 <div id="myfrmforwelcome" style="display: block; margin-top: 65px; line-height: 11px; " >
                  
                  
