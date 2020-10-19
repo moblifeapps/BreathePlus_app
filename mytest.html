@@ -1631,15 +1631,18 @@ function append_json(data) {
     $(img).attr("src", object.memimgsrc).attr("alt", $(img).attr("alt") + object.membername + " " + "etc")
   //////////////    .attr("grid-item-title", $(img).attr("grid-item-title") + object.membername + " finish this off");
   
+  var wheretogog=object.url;
+  wheretogog = wheretogog.replace('https://html5.gamedistribution.com/','');
+  wheretogog = wheretogog.replace('/','');
   
   $(newItem).find(".grid-item-description").html(object.description);
   console.log('Einai for each __4__ !!');
 
   $(newItem).on('click', function(event) {
        console.log('Ela reeeeee');
-       console.log(contactID);
+    //////   console.log(contactID);
        alert('Ela reeeeee');
-   //   myFunctionOpenUrl('/hlpdvdplayer_1.html');
+       myFunctionOpenUrl('https://www.mlapplications.com/newgametest.html?play=' + wheretogog);
   });
 
   //$(newItem).click("myFunctionOpenUrl('/hlpdvdplayer_1.html')");
