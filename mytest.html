@@ -772,7 +772,7 @@ margin-right: auto;
 -->
           <!-- Template for our posts -->
           <script type="text/template" id="mygamepostTemplate">
-            <div class="grid-item" onclick="myFunctionOpenUrl('/hlpdvdplayer_1.html')" >
+            <div class="grid-item" onclick="myFunctionOpenUrl('/hlpdvdplayer_1.html')"  >
  		          <div>
   		          <div>
                   <div style="height:4px; margin-top:-1px; background-color:rgb(0,102,9)"></div>
@@ -1635,13 +1635,16 @@ function append_json(data) {
   $(newItem).find(".grid-item-description").html(object.description);
   console.log('Einai for each __4__ !!');
 
-  $(newItem).on('click', function(event) {
-      console.log('Ela reeeeee');
-//      console.log(contactID);
-      alert('Ela reeeeee');
-      myFunctionOpenUrl('/hlpdvdplayer_1.html');
-  });
- 
+ // $(newItem).on('click', function(event) {
+     // console.log('Ela reeeeee');
+   //   console.log(contactID);
+   //   alert('Ela reeeeee');
+   //   myFunctionOpenUrl('/hlpdvdplayer_1.html');
+  //}
+
+  //$(newItem).click("myFunctionOpenUrl('/hlpdvdplayer_1.html')");
+   //   console.log('Einai for each __5__ !!');
+
   //  $(newItem).find(".membername").html(object.membername);
   //  $(newItem).find(".group").html(object.group);
   //  $(newItem).find(".company").html(object.company);
