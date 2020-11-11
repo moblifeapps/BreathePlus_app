@@ -398,7 +398,7 @@ alert(myx);
 }
 
 .grid-item {
-  margin: 1px;
+  margin: 5px;
   display:flexbox;
   width: 200px;
   max-width: 200px;
@@ -406,13 +406,13 @@ alert(myx);
   background-color: #F2F2F2;
 ;
   border: 1px solid rgb(5, 108, 12);
-  padding: 1px;
+  padding: 0px;
   font-size: 10px;
   text-align: center;
 
   cursor: pointer;
    
-    border-radius: 5px;
+    border-radius: 3px;
     will-change: transform;
     -webkit-box-flex: 1;
     flex: 1;
@@ -427,18 +427,19 @@ alert(myx);
 }
 .grid-item-title 
 {
-  background-color: transparent;
+  background-color: #007009;
   width: 200px;
-  max-height: 75px;
+ 
    font-weight: bold;
-  
-  color: #007009;
+   line-height: 22px;
+  color: #ffffff;
 font-size: 1.2rem;
+text-align: center;
 text-decoration: none;
 overflow: hidden;
 text-overflow: ellipsis;
 display: -webkit-box;
--webkit-line-clamp: 2;
+-webkit-line-clamp: 1;
 -webkit-box-orient: vertical;
 }
 .grid-item-description 
@@ -775,20 +776,61 @@ margin-right: auto;
             <div class="grid-item"   >
  		          <div>
   		          <div>
-                  <div style="height:4px; margin-top:-1px; background-color:rgb(0,102,9)"></div>
-  			          <span><img class="type mygameimage" src="https://img.gamedistribution.com/c5942ec4d034485fb21c9223744e7281-512x384.jpeg" alt="Super RunCraft" ></span>
+                  <span class="grid-item-description"  >Super RunCraft  is a wonderful 3D Run Game, run through a long minecraft land to collect rows of golden coins, number of special items such as Hoveboard along your running lane and avoid the obstacles in your way. </span>
+                  <span><img class="type mygameimage" src="https://img.gamedistribution.com/c5942ec4d034485fb21c9223744e7281-512x384.jpeg" alt="Super RunCraft" ></span>
       		      </div> 
-     		        <div class="content">
+                <div style="height:4px; margin-top:-1px; background-color:rgb(0,102,9)"></div>
+                <div class="content">
 <!--       		        <div class="grid-item-title">Super RunCraft</div>-->
                       <p class="grid-item-title">Super RunCraft</p>
 
-     	            <span class="grid-item-description"  >Super RunCraft  is a wonderful 3D Run Game, run through a long minecraft land to collect rows of golden coins, number of special items such as Hoveboard along your running lane and avoid the obstacles in your way. </span>
-            		</div>
+     	        		</div>
 	          </div>
           </div>
           </script>
 
+          <div class="grid-item"   >
+            <div>
+             <div>
+              <div class="grid-item-title"> asdasda asdas Super RunCraft</div>
+                <span><img class="type mygameimage" src="https://img.gamedistribution.com/c5942ec4d034485fb21c9223744e7281-512x384.jpeg" alt="Super RunCraft" ></span>
+             </div> 
+             <div style="height:1px; width:198px; margin-top:0px; background-color:rgb(0,0,0)"></div>
+             <div style="height:3px; width:198px; margin-top:0px; background-color:rgb(0,102,9)"></div>
+             <div style="height:1px; width:198px; margin-top:0px; background-color:rgb(0,0,0)"></div>
+   <!--            <div class="content">
+     		        <div class="grid-item-title">Super RunCraft</div>
+<span class="grid-item-description"  >Super RunCraft  is a wonderful 3D Run Game, run through a long minecraft land to collect rows of golden coins, number of special items such as Hoveboard along your running lane and avoid the obstacles in your way. </span>
+           
+                </div>-->
+                <span class="grid-item-description"  >Super RunCraft  is a wonderful 3D Run Game, run through a long minecraft land to collect rows of golden coins, number of special items such as Hoveboard along your running lane and avoid the obstacles in your way. </span>
+              </div>
+       </div>
 
+          <div class="grid-item">
+            <div>
+              <div>
+              
+                <span  ><img class="type mygameimage" src="https://img.gamedistribution.com/c5942ec4d034485fb21c9223744e7281-512x384.jpeg" alt="Super RunCraft" ></span>
+              </div> 
+              <div class="lalalacontent">
+                <div class="grid-item-title">asdasdas Super RunCraft</div>
+                <span class="grid-item-description"  >Super RunCraft  is a wonderful 3D Run Game, run through a long minecraft land to collect rows of golden coins, number of special items such as Hoveboard along your running lane and avoid the obstacles in your way. </span>
+          </div>
+        </div>
+        
+          </div>
+          <div class="grid-item">
+            <div>
+              <div>
+              
+                <span  ><img class="type mygameimage" src="https://img.gamedistribution.com/c5942ec4d034485fb21c9223744e7281-512x384.jpeg" alt="Super RunCraft" ></span>
+              </div> 
+              <div class="lalalacontent">
+                <div class="grid-item-title">Super RunCraft</div>
+                <span class="grid-item-description"  >Super RunCraft  is a wonderful 3D Run Game, run through a long minecraft land to collect rows of golden coins, number of special items such as Hoveboard along your running lane and avoid the obstacles in your way. </span>
+          </div>
+        </div>
 
 <!--
   <div class="grid-item">
@@ -860,7 +902,7 @@ margin-right: auto;
    
 </div>
    
-  <!--    <div class="games-container ais-results list-view-grid" data-v-03e19dc2=""> 
+    <div class="games-container ais-results list-view-grid" data-v-03e19dc2=""> 
         <div page="search-result-page" class="myitemgame" data-v-108e2dda="" data-v-03e19dc2="">
           <div class="thumbnail thumbnail--loaded" data-v-108e2dda="">
             <div class="spinner" data-v-108e2dda="">
@@ -898,6 +940,7 @@ margin-right: auto;
 
      
   </div>
+   <!-- 
   -->
       
         <div class="row" style="display: flow-root;">
@@ -2641,6 +2684,81 @@ catch(err) {
       </script>
 
 
+
+<div style="border-radius:11px 0px 0px 11px;  visibility: visible; background-color: #0D2E64; width: 80px; height: 400px; position: fixed; bottom:   0px; top:50%; margin-top: -300px;  right:  0px; ">
+  
+  <div style="padding:0px 0px 0px  0px;   text-align: center;">
+    <img width="60" style="text-align: center;" src="https://www.mlapplications.com/files/theme/appdvdplayerplus/myglossyhorizontal.png">
+ 
+    <a alt="the app Privacy Policy" onclick="myFunctionOpenUrl('/game_privacy.html')" class="btn-floating waves-effect waves-light  btn-large   " style="background: #0D2E64">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="56" width="56" viewBox="0 0 56 56">
+                      <g>
+                          <ellipse cy="28" cx="28" stroke-width="1.875" ry="27.0625" rx="27.0625" stroke="#FFFFFF" fill="transparent"></ellipse>
+                          <path id="path1" transform="rotate(0,28,28) translate(13,14.0926568508148) scale(0.9375,0.9375)  " fill="#FFFFFF" d="M21.914978,18.709999C21.914978,18.709999,31.121033,20.901001,32,29.668999L0,29.668999C0,29.668999,2.6290283,20.021996,10.518005,19.143997L12.65802,28.294998 14.22998,28.284996 16.012024,23.601997 14.348022,20.707001 17.677002,20.707001 16.078979,23.672997 18.116028,28.253998 19.34198,28.243996z M15.778015,0C20.653992,0 24.612,3.9519958 24.612,8.8330002 24.612,13.709 20.653992,17.666 15.778015,17.666 10.897034,17.666 6.9440308,13.709 6.9440308,8.8330002 6.9440308,3.9519958 10.897034,0 15.778015,0z"></path>
+                      </g>
+                  </svg>
+              </a>
+</div>
+<div style="padding:0px; color: white; text-align: center;">Privacy</div>
+ 
+<div style="padding:0px;   text-align: center;">
+  <img width="60" style="text-align: center;" src="https://www.mlapplications.com/files/theme/appdvdplayerplus/myglossyhorizontal.png">
+
+<a alt="App's Help" onclick="myFunctionOpenUrl('/hlpdvdplayer_1.html')" class="btn-floating waves-effect red pulse waves-light  btn-large">
+  <svg xmlns="http://www.w3.org/2000/svg" height="56" width="56" viewBox="0 0 56 56">
+      <g>
+          <ellipse cy="28" cx="28" stroke-width="1.875" ry="27.0625" rx="27.0625" stroke="#FFFFFF" fill="transparent"></ellipse>
+          <path id="path12121" transform="rotate(0,28,28) translate(13.0670570135117,13) scale(0.9375,0.9375)  " fill="#FFFFFF" d="M14.580002,23.394012L14.580002,26.235001 17.18399,26.235001 17.18399,23.394012z M16.117996,5.7660065C14.539993,5.7660065 13.278992,6.2390137 12.332993,7.1880035 10.991989,8.5250092 10.320999,10.223007 10.320999,12.27301L13.043991,12.27301C13.043991,10.695007 13.437988,9.5130005 14.22699,8.7230072 14.697998,8.25 15.289001,8.0130005 16,8.0130005 16.867996,8.0130005 17.537003,8.25 18.009995,8.7230072 18.561996,9.2750092 18.838989,10.106003 18.838989,11.207001 18.838989,12.077011 18.522995,12.827011 17.89299,13.455002 16.789001,14.561005 16.039001,15.429001 15.644989,16.061005 15.090988,16.92601 14.817001,18.228012 14.817001,19.964005L16.947998,19.964005C16.947998,18.545013 17.302002,17.478012 18.009995,16.767014 18.955994,15.824005 19.705994,15.074005 20.259995,14.522003 21.205002,13.574005 21.679001,12.432007 21.679001,11.090012 21.679001,9.5130005 21.166,8.2109985 20.14299,7.1880035 19.194992,6.2390137 17.853989,5.7660065 16.117996,5.7660065z M16,0C24.819992,0 32,7.178009 32,16.001007 32,24.822006 24.819992,32 16,32 7.1759949,32 0,24.822006 0,16.001007 0,7.178009 7.1759949,0 16,0z">
+          </path>
+      </g>
+  </svg>
+</a>
+</div>
+<div style="padding:0px; color: white; text-align: center;">Help ..</div>
+ 
+<div style="padding:0px 0px 0px  0px;   text-align: center;">
+  <img width="60" style="text-align: center;" src="https://www.mlapplications.com/files/theme/appdvdplayerplus/myglossyhorizontal.png">
+
+  <a alt="More games" onclick="myFunctionOpenUrl('/games.html')" class="btn-floating waves-effect waves-light  btn-large   " style="background: #0D2E64">
+
+  <!-- <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="56" height="56" viewBox="0 0 14.816666 14.816667" version="1.1" id="svg4499" inkscape:version="0.92.1 r15371" sodipodi:docname="lalala.svg">
+      <defs id="defs4493"/>
+       <metadata id="metadata4496">
+ 
+      </metadata>
+    </svg> -->
+
+    <img style="margin-right:1px; " src="https://www.mlapplications.com/files/theme/addgame2.svg" alt="DVD Player+ feature: Movie Info">
+
+  
+            </a>
+</div>
+<div style="padding:0px; color: white; text-align: center;">More ..</div>
+
+<div style="padding:0px;   text-align: center;">
+<img width="60" style="text-align: center;" src="https://www.mlapplications.com/files/theme/appdvdplayerplus/myglossyhorizontal.png">
+
+<a alt="App's Help" onclick="myFunctionOpenUrl('/index.html')" class="btn-floating waves-effect waves-light  btn-large   " style="background: #0D2E64">
+  <svg xmlns="http://www.w3.org/2000/svg" height="56" width="56" viewBox="0 0 56 56">
+    <g>
+        <ellipse cy="28" cx="28" stroke-width="1.87499977648261" ry="27.0625001117587" rx="27.0625001117587" stroke="#FFFFFF" fill="transparent"></ellipse>
+        <path id="path1" transform="rotate(0,28,28) translate(13,13.9023450729436) scale(0.937499888241304,0.937499888241304)  " fill="#FFFFFF" d="M4.9159451,15.545L12.816834,17.830003 10.411869,19.161012 13.764817,22.385013 12.164834,24.049 8.812893,20.824009 7.5059048,23.352009z M12.640841,6.0990002C12.024853,6.0990002 11.52486,6.6000073 11.52486,7.2160046 11.52486,7.8310101 12.024853,8.3310106 12.640841,8.3310106 13.256829,8.3310106 13.756823,7.8310101 13.756823,7.2160046 13.756823,6.6000073 13.256829,6.0990002 12.640841,6.0990002z M8.4618846,6.0280011C7.8458959,6.0280011 7.3469101,6.5280011 7.3469101,7.1439984 7.3469101,7.7600109 7.8458959,8.2590043 8.4618846,8.2590043 9.0788804,8.2590043 9.5778657,7.7600109 9.5778657,7.1439984 9.5778657,6.5280011 9.0788804,6.0280011 8.4618846,6.0280011z M4.2839657,5.9590003C3.6679469,5.9590003 3.1679541,6.4570019 3.1679541,7.0729992 3.1679541,7.6900036 3.6679469,8.1890123 4.2839657,8.1890123 4.8999544,8.1890123 5.3999473,7.6900036 5.3999473,7.0729992 5.3999473,6.4570019 4.8999544,5.9590003 4.2839657,5.9590003z M3.0159784,3.3020027L20.14171,3.3020027C20.028736,3.4349983 19.930714,3.5830085 19.874716,3.7570045 19.690727,4.3229987 19.889731,4.9380042 20.369734,5.2860114L22.79069,7.0460064 21.866692,9.8910081C21.769709,10.186998,21.783716,10.496004,21.88369,10.774004L3.1879731,10.774004 3.1879731,26.888004 24.910654,26.888004 24.910654,10.774004 24.859661,10.774004 26.391621,9.6610124 28.096613,10.901003 28.096613,27.060001C28.096613,28.72501,26.747633,30.075001,25.081642,30.075001L3.0159784,30.075001C1.3499868,30.075001,0,28.72501,0,27.060001L0,6.3180096C0,4.6520088,1.3499868,3.3020027,3.0159784,3.3020027z M26.391621,0C26.561632,2.2418453E-07,26.711624,0.10900903,26.763624,0.27000477L27.907621,3.7910011 31.608557,3.7910011C31.777561,3.7910011 31.927551,3.9000099 31.98056,4.0599983 32.033569,4.2220008 31.975556,4.398011 31.838564,4.49701L28.843613,6.6719982 29.987578,10.194002C30.039579,10.354006 29.98358,10.531008 29.845581,10.630007 29.77759,10.681001 29.696596,10.704012 29.615604,10.704012 29.535587,10.704012 29.455603,10.681001 29.386604,10.630007L26.391621,8.4540117 23.396668,10.630007C23.327669,10.681001 23.247685,10.704012 23.167667,10.704012 23.086676,10.704012 23.005682,10.681001 22.937691,10.630007 22.799692,10.531008 22.742685,10.354006 22.795694,10.194002L23.939659,6.6719982 20.944708,4.49701C20.807716,4.398011 20.75071,4.2220008 20.802712,4.0599983 20.855721,3.9000099 21.004704,3.7910011 21.174715,3.7910011L24.876658,3.7910011 26.019648,0.27000477C26.072624,0.10900903,26.22164,2.2418453E-07,26.391621,0z"></path>
+    </g>
+</svg>
+</a>
+</div>
+<div style="padding:0px; color: white; text-align: center;">Website</div>
+
+</div>
+
+<path
+id="path2"
+overflow="visible"
+display="inline"
+visibility="visible"
+d="m 8.0483599,283.73538 c -0.190308,0 -0.3445736,0.15427 -0.3445736,0.34457 v 2.41202 h 0.6891472 v -2.41202 c 0,-0.1903 -0.1542656,-0.34457 -0.3445736,-0.34457 z m -4.1348834,3.10117 c -1.8078744,0 -3.27344941,1.46559 -3.27344941,3.27345 0,1.80782 1.46557501,3.27345 3.27344941,3.27345 1.6319006,0 2.9824569,-1.19447 3.2303777,-2.75659 h 1.8090115 c 0.2479207,1.56212 1.5984773,2.75659 3.2303773,2.75659 1.807875,0 3.27345,-1.46563 3.27345,-3.27345 0,-1.80786 -1.465575,-3.27345 -3.27345,-3.27345 z m 0,1.55058 c 0.190308,0 0.3445736,0.15426 0.3445736,0.34457 v 1.03372 H 5.291771 c 0.190308,0 0.3445736,0.15427 0.3445736,0.34458 0,0.19031 -0.1542656,0.34457 -0.3445736,0.34457 H 4.2580501 v 1.03372 c 0,0.19031 -0.1542656,0.34458 -0.3445736,0.34458 -0.190308,0 -0.3445736,-0.15427 -0.3445736,-0.34458 v -1.03372 H 2.535182 c -0.190308,0 -0.3445736,-0.15426 -0.3445736,-0.34457 0,-0.19031 0.1542656,-0.34458 0.3445736,-0.34458 h 1.0337209 v -1.03372 c 0,-0.19031 0.1542656,-0.34457 0.3445736,-0.34457 z m 8.2697665,0 c 0.285445,0 0.516861,0.2314 0.516861,0.51686 0,0.28546 -0.231416,0.51686 -0.516861,0.51686 -0.285462,0 -0.51686,-0.2314 -0.51686,-0.51686 0,-0.28546 0.231398,-0.51686 0.51686,-0.51686 z m -1.206007,1.20601 c 0.285462,0 0.51686,0.2314 0.51686,0.51686 0,0.28544 -0.231398,0.51686 -0.51686,0.51686 -0.285445,0 -0.516861,-0.23142 -0.516861,-0.51686 0,-0.28546 0.231416,-0.51686 0.516861,-0.51686 z m 2.412016,0 c 0.285462,0 0.51686,0.2314 0.51686,0.51686 0,0.28544 -0.231398,0.51686 -0.51686,0.51686 -0.285462,0 -0.516861,-0.23142 -0.516861,-0.51686 0,-0.28546 0.231399,-0.51686 0.516861,-0.51686 z m -1.206009,1.206 c 0.285445,0 0.516861,0.2314 0.516861,0.51686 0,0.28547 -0.231416,0.51687 -0.516861,0.51687 -0.285462,0 -0.51686,-0.2314 -0.51686,-0.51687 0,-0.28546 0.231398,-0.51686 0.51686,-0.51686 z"
+style="color:#ffffff;display:inline;overflow:visible;visibility:visible;fill:#ebebeb;fill-opacity:1;stroke:none;stroke-width:0.26458332;enable-background:accumulate"
+ />
 
 </body>
 
