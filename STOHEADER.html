@@ -1,0 +1,407 @@
+<title>Online Games+ (Puzzle)</title>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Description" content="the Online Games+ (Puzzle) is not Game but a Web Catalog App. We collect, play and evaluate more than 100 free Puzzle Games. Here are the Best-40 !">
+
+<link rel="manifest" href="files/theme/pwapuzzle/manifest.json">
+
+<!-- To      img/icons/          tha ginei       files/theme/pwapuzzle/    !!!-->
+<!-- To     /img/icons/         tha ginei       /files/theme/pwapuzzle/    !!!-->
+<link rel="mask-icon" href="https://www.mlapplications.com/files/theme/pwapuzzle/safari-pinned-tab.svg" color="#107B13">
+<meta name="apple-mobile-web-app-title" content="Games+ (Puzzle)">
+<meta name="application-name" content="Games+ (Puzzle)">
+<meta name="msapplication-TileColor" content="#242221">
+<meta name="msapplication-TileImage" content="files/theme/pwapuzzle/mstile-144x144.png">
+<meta name="msapplication-config" content="files/theme/pwapuzzle/browserconfig.xml">
+
+<meta name="theme-color" content="#107B13">
+
+
+    <meta property="og:image" content="https://www.mlapplications.com/files/theme/pwapuzzle/icon-96x96.png">
+    <meta property="og:title" content="Online Games+ (Puzzle) application" />
+    <meta name="author" content="Mobility in Life Applications TEAM">
+    <meta property="og:description" content="The Online Games+ (Puzzle) application is a Web Catalog App that lists the latest 40 Puzzle Games that are available to play for free through our Website, without the need to download, subscribe or pay anything! " />
+    <meta name="author" content="Mobility in Life Applications TEAM" />
+    <meta property="og:url" content="dob-finder.firebaseapp.com" />
+    <meta property="og:site_name" content="Mobility in Life Applications TEAM" />
+    <meta property="og:type" content="application" />
+
+     <!-- Google Knowledge Graph card -->
+    <script type='application/ld+json'>
+        {
+            "@context": "http://www.schema.org",
+            "@type": "application",
+            "name": "Online Games+ (Puzzle) application",
+            "url": "https://www.mlapplications.com/onlinegamespuzzle.html",
+            "logo": "https://www.mlapplications.com/files/theme/pwapuzzle/icon-96x96.png",
+            "description": "The Online Games+ (Puzzle) application is a Web Catalog App that lists the latest 40 Puzzle Games that are available to play for free through our Website, without the need to download, subscribe or pay anything!"
+        }
+    </script>
+    <!--Bootstrap CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+<!-- Mallon den xreiazetai to parapanw !!! -->
+
+         <!--logo-->
+    <link rel="shortcut icon" href="https://www.mlapplications.com/files/theme/pwapuzzle/icon-96x96.png">
+
+    <!-- register service worker -->
+<!--<script>
+    if ('serviceWorker' in navigator)
+    {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('files/theme/pwapuzzle/pwapuzzle-service-worker.js')
+      .then(function() { console.log("Service Worker Registered, Cheers to PWA Fire!"); });
+    }
+    );
+  }
+  </script> -->
+  <!-- end of service worker -->
+
+  <script> 
+  if ('serviceWorker' in navigator) {
+    //navigator.serviceWorker.register('./files/theme/pwapuzzle/pwapuzzle-service-worker.js', {scope: './files/theme/pwapuzzle/'})
+   // navigator.serviceWorker.register('./files/theme/pwapuzzle/pwapuzzle-service-worker.js', {scope: './'})
+  // navigator.serviceWorker.register('/files/theme/pwapuzzle/pwapuzzle-service-worker.js', {scope: '/files/theme/pwapuzzle/'})
+  navigator.serviceWorker.register('/pwapuzzle-service-worker.js', {scope: '/'})
+    
+   .then((reg) => {
+      // registration worked
+      console.log('Registration succeeded. Cheers to PWA Fire!.. Scope is ' + reg.scope);
+    }).catch((error) => {
+      // registration failed
+      console.log('Registration failed with ' + error);
+    });
+  }
+</script>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Import materialize.css-->
+ <link type="text/css" rel="stylesheet" href="https://www.mlapplications.com/files/theme/mymaterialize.min.css"  media="screen,projection"/>
+
+<!--Main Stylesheet
+<link rel="stylesheet" type="text/css" media="screen" href="css/app.css" />
+-->
+<link rel="stylesheet" href="https://www.mlapplications.com/files/theme/mytemplate.css">
+
+<!--logo-->
+<link rel="shortcut icon" href="img/icons/icon-96x96.png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src='https://www.mlapplications.com/files/theme/mymaterialize.js'></script>
+
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Import materialize.css
+<link type="text/css" rel="stylesheet" href="https://www.mlapplications.com/files/theme/materialize.min.css"  media="screen,projection"/>
+-->
+<style>
+.content-wrap {
+background: transparent;
+}
+
+.progress-ring {
+position: relative;
+margin: 0px auto;
+width: 50px;
+height: 50px;
+}
+
+.outer {
+position: absolute;
+width: 100%;
+height: 100%;
+opacity: 0;
+-webkit-animation: progress-ring 4.5s linear infinite;
+}
+
+.inner {
+background: #fff;
+border-radius: 5px;
+width: 5px;
+height: 5px;
+}
+
+@-webkit-keyframes progress-ring {
+0% { opacity: 1; -webkit-transform: rotate(-110deg); }
+9.622% { -webkit-transform: rotate(10deg); }
+26.667% { -webkit-transform: rotate(93deg); }
+35.933% { -webkit-transform: rotate(205deg); }
+44.822% { -webkit-transform: rotate(357deg); }
+61.844% { -webkit-transform: rotate(439deg); }
+71.489% { opacity: 1; -webkit-transform: rotate(585deg); }
+71.49% { opacity: 0; }
+100% { opacity: 0; -webkit-transform: rotate(610deg); }
+}
+.myoverlay {
+height: 100%;
+width: 0;
+position: fixed;
+z-index: 1;
+top: 0;
+left: 0;
+background-color: rgb(16,123,19);
+background-color: rgba(16,123,19, 1);
+overflow-x: hidden;
+transition: 0.1s;
+}
+
+myoverlay-content2 {
+position: relative;
+top: 25%;
+width: 100%;
+text-align: center;
+margin-top: 10px;
+}
+
+.myoverlay2 a {
+padding: 8px;
+text-decoration: none;
+font-size: 36px;
+color: #818181;
+display: block;
+transition: 0.1s;
+}
+
+.myoverlay2 a:hover, .myoverlay2 a:focus {
+color: #f1f1f1;
+}
+
+.myoverlay2 .closebtn {
+position: absolute;
+top: 20px;
+right: 45px;
+font-size: 60px;
+}
+
+
+
+.myoverlay-content {
+position: relative;
+top: 25%;
+width: 100%;
+text-align: center;
+margin-top: 10px;
+}
+
+.myoverlay a {
+padding: 8px;
+text-decoration: none;
+font-size: 36px;
+color: #818181;
+display: block;
+transition: 0.1s;
+}
+
+.myoverlay a:hover, .myoverlay a:focus {
+color: #f1f1f1;
+}
+
+.myoverlay .closebtn {
+position: absolute;
+top: 20px;
+right: 45px;
+font-size: 60px;
+}
+
+.mytextslarge {
+  color: whitesmoke;
+  text-shadow: 0 0.2rem 0.5rem rgba(0,0,0,.6);
+  font-size: 1.5rem;
+  padding: 14px;
+}
+.mytexts {
+  color: whitesmoke;
+  text-shadow: 0 0.2rem 0.5rem rgba(0,0,0,.6);
+  font-size: 1.0rem;
+  padding: 10px;
+}
+html, body {
+    position: relative;
+    height: 100%;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+h1 {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-shadow: 0 0.3rem 0.9rem rgba(0,0,0,.5);
+}
+.p {
+color: white;
+}
+p {
+color: white;
+}
+p.lead {
+    text-shadow: 0 0.2rem 0.5rem rgba(0,0,0,.6);
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+}
+.container {
+margin:0 auto;
+width:100%;
+max-width: 100%;
+}
+</style>
+
+
+<script src="https://www.mlapplications.com/files/theme/myEneterMessaging7.0.0.js"></script>
+
+<script>
+window.onload = function () { 
+openNav();
+myFunctionfortitle();     
+
+}; 
+
+</script>
+
+
+<style>
+.games-container {
+font-family: Roboto,sans-serif;
+line-height: 180%;
+color: #999;
+font-weight: 300;
+letter-spacing: 1px;
+-webkit-font-smoothing: antialiased;
+font-size: 22px;
+display: grid;
+-webkit-box-orient: horizontal;
+-webkit-box-direction: normal;
+flex-direction: row;
+flex-flow: wrap;
+margin: -.6818rem;
+-webkit-box-flex: 1;
+flex: 1;
+margin: 1.364rem;
+
+}
+.myitemgame {
+font-family: Roboto,sans-serif;
+line-height: 180%;
+color: #999;
+font-weight: 300;
+letter-spacing: 1px;
+-webkit-font-smoothing: antialiased;
+font-size: 22px;
+-webkit-box-direction: normal;
+display: block;
+box-sizing: border-box;
+cursor: pointer;
+text-decoration: none;
+border-radius: 1px;
+will-change: transform;
+-webkit-box-flex: 1;
+flex: 1;
+background-color: #fff;
+min-width: 200px;
+box-shadow: 0 1px 2px rgba(0,0,0,.4);
+transition: box-shadow .2s cubic-bezier(.25,.75,.5,1.25),transform .2s cubic-bezier(.25,.75,.5,1.25),-webkit-transform .2s cubic-bezier(.25,.75,.5,1.25);
+max-width: 200px;
+margin: .6818rem;
+}
+
+.newmembers {
+display: grid;
+grid-gap: 10px;
+grid-template-columns: repeat(auto-fit, minmax(155px, 175px));
+grid-auto-rows: 370px;
+grid-auto-flow: dense;
+justify-content: center;
+padding: 10px 10px 10px;
+background-color: #c7c7c7;
+}
+
+.member {
+background: rgba(255, 213, 70, 0.3);
+border: 1px solid grey;
+text-align: center;
+border-radius: 4px;
+box-shadow: 3px 3px 3px grey;
+}
+
+.type {
+color: #1f7665;
+font-weight: 900;
+text-transform: uppercase;
+margin: 0px 0px 0px;
+text-align: center;
+}
+
+.year {
+color: #1f7665;
+font-weight: bold;
+font-size: x-small;
+margin: 0px 0px 0px;
+text-align: center;
+}
+
+.thumb {
+width: 85%;
+min-height: 160px;
+max-height: 160px;
+min-width: 160x;
+max-width: 160px;
+object-position: center top;
+-o-object-fit: cover;
+object-fit: cover;
+overflow: hidden;
+border: 5px solid #fff;
+border-radius: 4px;
+box-shadow: 5px 5px 5px grey;
+-webkit-filter: grayscale(100%);
+filter: grayscale(100%);
+}
+
+.thumb:hover {
+position: relative;
+top: 5px;
+left: 5px;
+background: #00CCCC;
+-webkit-filter: grayscale(10%);
+filter: grayscale(10%);
+}
+
+.membername {
+color: #1f7665;
+font-weight: 900;
+text-transform: uppercase;
+margin: 10px 0px 0px;
+}
+
+.group {
+color: #333333;
+font-weight: bold;
+margin: 0px 0px 5px;
+}
+
+.company {
+color: #333333;
+font-weight: normal;
+margin: 0px 0px 5px;
+}
+
+.classification {
+color: #333333;
+font-weight: bold;
+margin: 0px 0px 10px;
+font-size: x-small;
+}
+
+.info {
+margin: 10px;
+}
+</style>
