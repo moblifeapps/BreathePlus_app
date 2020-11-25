@@ -45,6 +45,8 @@ height: 110px;
     min-width: 140px;
     box-shadow: 0 1px 2px rgba(0,0,0,.4);
     transition: box-shadow .2s cubic-bezier(.25,.75,.5,1.25),transform .2s cubic-bezier(.25,.75,.5,1.25),-webkit-transform .2s cubic-bezier(.25,.75,.5,1.25);
+  
+    
     }
     .grid-item-title {
     background-color: #007009;
@@ -64,12 +66,20 @@ height: 110px;
     }
 </style>
 </head>
-  <body  style= "width: 140px; height: 1800px; background-color: rgb(0, 23, 138);" >
-    <img style="height:56px; margin-top: 30px;" src="https://www.mlapplications.com/files/theme/appdvdplayerplus/logoml.png" alt="the Mobility in Life Applications TEAM logo">
+  <body  style= "width: 140px; margin: 0px; height: 100%; background-color: rgb(0, 23, 138);" >
+    <img style="height:56px; margin-top: 7px;" src="https://www.mlapplications.com/files/theme/appdvdplayerplus/logoml.png" alt="the Mobility in Life Applications TEAM logo">
     <img style="text-align: center;" src="https://www.mlapplications.com/files/theme/appdvdplayerplus/myglossyhorizontal.png" width="100">
-    <div>       <span  style="text-align: center; color: #d5d5d5; font-size:20px;">Play our new PWA app!</span>
+    <div>       <span  style="text-align: center; color: #d5d5d5; font-size:20px;">new PWA app!</span>
     </div>
-
+    <img style="text-align: center;" src="https://www.mlapplications.com/files/theme/appdvdplayerplus/myglossyhorizontal.png" width="100px">
+    <div>       
+        <span  style="text-align: center; color: #d5d5d5; font-weight: bold; font-size:12px;">100% FREE..  </span>
+    </div>
+    <div>
+        <span  style="text-align: center; color: #d5d5d5;font-weight: bold; font-size:12px;">No installation needed !</span>
+    </div>
+    <img style="text-align: center;" src="https://www.mlapplications.com/files/theme/appdvdplayerplus/myglossyhorizontal.png" width="100px">
+  
     <div class="grid-container mygmcontainer" id="mygmcontainer" style="margin-top: 10px;">
         
                    
@@ -83,7 +93,7 @@ height: 110px;
         
        
             
-                <div class="grid-item">
+                <div class="grid-item" onclick="window.open('https://www.mlapplications.com/onlinegamespuzzle.html','mywindow');"  >
                    <div>
                     <div>
                      <div class="grid-item-title">Ball Toss Puzzle</div>
@@ -686,6 +696,11 @@ height: 110px;
                     
                     </div>
 
-
+                    
+                    <script>
+                        $("body").on("click", ".grid-item", function(){
+                        window.location = $(this).attr("href");
+                        });
+                        </script>
   </body>
 </html>
