@@ -64,9 +64,22 @@ height: 110px;
     -webkit-box-orient: vertical;
     margin-top: 0px;
     }
+    .mygmcontainer
+    {
+        overflow-y: scroll;
+    }
+    .mygmcontainer::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.mygmcontainer {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 </style>
 </head>
-  <body  style= "width: 140px; margin: 0px; height: 100%; background-color: rgb(0, 23, 138);" >
+  <body  style= "width: 140px; overflow: hidden; margin: 0px; height: 100%; background-color: rgb(0, 23, 138);" >
     <img style="height:56px; margin-top: 7px;" src="https://www.mlapplications.com/files/theme/appdvdplayerplus/logoml.png" alt="the Mobility in Life Applications TEAM logo">
     <img style="text-align: center;" src="https://www.mlapplications.com/files/theme/appdvdplayerplus/myglossyhorizontal.png" width="100">
     <div>       <span  style="text-align: center; color: #d5d5d5; font-size:20px;">new PWA app!</span>
