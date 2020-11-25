@@ -1623,9 +1623,109 @@ $("document").ready(function() {
   </div>
 </div>
 */
-
-
 function append_json(data) {
+  
+  
+  console.log('Einai sto append json');
+
+  //Set Up the template
+  var s = $("#mygamepostTemplate")[0].innerHTML.trim();
+  var holder = document.createElement('div');
+  holder.innerHTML = s;
+  var template = holder.childNodes;
+
+  var member = document.getElementById('mygmcontainer');
+  data.forEach(function(object) {
+
+    console.log('Einai for each __1__ !!');
+    //Clone Template
+    var newItem = $(template).clone();
+
+
+// grid-linkk
+    //Populate it
+    $(newItem).find(".grid-item-title").html(object.title);
+   // $(newItem).find(".year").html($(newItem).find(".year").html() + " " + object.year);
+   console.log('Einai for each __2__ !!..object.title:' + object.title);
+    $(newItem).find(".url").attr("href", object.url);
+
+    console.log('Einai url:' + object.url);
+    console.log('Einai width:' + object.width);
+    console.log('Einai height:' + object.height);
+        
+    var theassets = object.assetList;
+    var telikostr ="";
+    theassets.forEach(function (aaaa) {
+      if (telikostr.length ==0) 
+      {
+        telikostr = aaaa.name;
+      }
+      console.log('Meeee:' + aaaa.name);
+    });
+
+    console.log('Einai url:' + object.url);
+
+  //  console.log('Einai for each __3__ !!');
+    console.log('Einai for each __3__ !!');
+    var img = $(newItem).find(".mygameimage");
+//    console.log('Einai: '+ object.assetList.name[0]);
+   
+    $(img).attr("src", telikostr);
+    $(img).attr("src", object.memimgsrc).attr("alt", $(img).attr("alt") + object.membername + " " + "etc")
+  //////////////    .attr("grid-item-title", $(img).attr("grid-item-title") + object.membername + " finish this off");
+  
+  var wheretogog=object.url;
+  wheretogog = wheretogog.replace('https://html5.gamedistribution.com/','');
+  wheretogog = wheretogog.replace('/','');
+  
+  $(newItem).find(".grid-item-description").html(object.description);
+//  console.log('Einai for each __4__ !!');
+
+   $(newItem).on('click', function(event) {
+//////////       console.log('Ela reeeeee');
+    //////   console.log(contactID);
+       //alert('Ela reeeeee');
+  //     myFunctionOpenUrl('https://www.mlapplications.com/newgametest.html?play=' + wheretogog);
+
+   myFunctionOpenUrl('//www.mlapplications.com/igameplay.html?gamecategory=mypuzzle&play=' + wheretogog);
+   });
+
+
+//  $(newItem).find(".grid-item-title").html(object.title);
+
+
+////console.log('Einai wheretogog:' + wheretogog);
+
+////    var tolinklalala = $(newItem).find(".grid-linkk");
+///  console.log('Einai wheretogog:' + wheretogog);
+
+///  console.log('Einai tolinklalala:' +   $(newItem).find(".grid-linkk").innerHTML);
+
+///  var tolinklalala2 = $(newItem).a.innerHTML();
+///  console.log('Einai tolinklalala2:' + tolinklalala2.innerHTML);
+
+ // grid-linkk
+  //  console.log('Einai tolink:' + tolink.attr("href"));
+
+//    $(tolink).attr("href", '//www.mlapplications.com/igameplay.html?gamecategory=mypuzzle&play=' + wheretogog);
+
+//  console.log('Einai tolink:' + tolink.attr("href"));
+ 
+  //$(newItem).click("myFunctionOpenUrl('/hlpdvdplayer_1.html')");
+   //   console.log('Einai for each __5__ !!');
+
+  //  $(newItem).find(".membername").html(object.membername);
+  //  $(newItem).find(".group").html(object.group);
+  //  $(newItem).find(".company").html(object.company);
+ //   $(newItem).find(".description").html(object.description);
+    //Append it
+
+    $(".mygmcontainer").append(newItem);
+
+  });
+}
+
+function append_jsonOLDDDDDDDDDDDDD(data) {
 
 
   console.log('Einai sto append json');
@@ -1767,8 +1867,43 @@ function append_jsonOLD(data) {
   });
 }
 
-
 function get_json_data(){
+    //alert('here 1');
+      // Relative URL of external json file
+   //   var json_url = 'example.json';
+  var json_url='https://www.mlapplications.com/files/theme/pwapuzzle/mypuzzle.json';
+  
+      //Build the XMLHttpRequest (aka AJAX Request)
+      xmlhttp = new XMLHttpRequest();
+  
+      console.log('Here2');
+      xmlhttp.onreadystatechange = function() { 
+        console.log('Here3');
+        console.log('Here3 and ' + this.status + " !!");
+  
+          if (this.readyState == 4 && this.status == 200) {//when a good response is given do this
+            console.log('Here4');
+  
+              var data = JSON.parse(this.responseText); // convert the response to a json object
+              console.log('Here5aaaaaa');
+  
+  
+            //  append_jsonGOOD(data);
+              append_json(data);// pass the json object to the append_json function
+          }
+      }
+      //set the request destination and type
+      xmlhttp.open("GET", json_url, true);
+    //////////  xmlhttp.open("POST", json_url, true);
+      //set required headers for the request
+      console.log('Here6');
+  //////////    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      // send the request
+      console.log('Here7');
+     xmlhttp.send(); // when the request completes it will execute the code in onreadystatechange section
+  }
+
+function get_json_dataOLDDDDDDDDDDDDD(){
   alert('here 1');
     // Relative URL of external json file
  //   var json_url = 'example.json';
