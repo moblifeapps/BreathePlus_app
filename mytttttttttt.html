@@ -1,0 +1,1269 @@
+       
+<div id="output">
+    <hr>
+       </div>
+       <div>
+           <canvas id="canvas" height="0" width="300"></canvas>
+       </div>  
+       <script>
+       var agnoise = 'yes';
+          var theTrailerPosterDefault = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/myblueback.jpg';
+        var theTrailerPoster = '-';
+   
+           var IsFirstTimeHere = 'false';
+   
+           var toTotalNumOfFiles = '';
+           var toTotalNumOfMediaFiles = '';
+     
+           var toMultipleLetters = '';
+           var theDVDTitle = '-';
+           var theDVDType = '-';
+           var theDVDYear = '| ';
+           var theDVDCategory = '| ';
+           var theDVDRating = '?';
+           var theDVDDuration = '| N/A';
+           var theDVDReleased = '-';
+           var theDVDVotes = '-';
+           var theDVDAges = '';
+           var theDVDPoster = '';
+   
+           var IparxeiDVD_Drive = 'false';
+           var toName = '';
+           var toIsReady = 'false';
+           var toDriveFormat = '';
+           var toDriveType = '';
+           var toVolumeLabel = '';
+           var toTotalSize = '';
+           var toAvailableFreeSpace = '';
+           var toTotalFreeSpace = '';
+           var toYear = '';
+           var toMediaType = '';
+           var TiGrafwAudioCD_DiscID = '';
+           var TiGrafwAudioCD_FreeDBID = '';
+           var TiGrafwAudioCD_NumOfFiles = '';
+           var TiGrafwAudioCD_XBOX_ServicesURL = '';
+   
+           var egineconnected = false;
+           var eginesubscribed = false;
+           // Initialize chart.
+        //   var myChartConfig = {
+        //       animation: false,
+        //       scaleOverlay: true,
+        //       scaleOverride: true,
+        //       scaleSteps: 10,
+        //       scaleStepWidth: 10,
+        //       scaleStartValue: 0
+        //   };
+       //    var myLineChartData = {
+       //        labels: ["", "", "", "", "", "", "", "", "", ""],
+         //      datasets: [
+           //        {
+             //          fillColor: "rgba(220,220,220,0.5)",
+               //        strokeColor: "rgba(220,220,220,1)",
+                 //      pointColor: "rgba(220,220,220,1)",
+     //                  pointStrokeColor: "#fff",
+       //                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+         //          }
+           //    ]
+   
+        //   };
+          // var myChart = new Chart(document.getElementById("canvas").getContext("2d"));
+   
+           // Create the duplex output channel.
+           var myOutputChannel = new WebSocketDuplexOutputChannel("ws://127.0.0.1:8843/CpuUsage/", null);
+           // /192.168.43.7
+           //var myOutputChannel = new WebSocketDuplexOutputChannel("wss://192.168.43.7:8843/CpuUsage/", null);
+           // /192.168.43.7
+   
+           // Create BrokerClient
+           var myBrokerClient = new DuplexBrokerClient();
+   
+           // Subscribe to notifications.
+           myBrokerClient.onBrokerMessageReceived = onBrokerMessageReceived;
+   
+   
+   
+   function myFunctionShowNextRfrsh() {
+   //alert('Here.....');
+   
+   setCookie("firsttimehere", "-", 300);
+   agnoise = 'no';
+   SetFirstTimeStorage();
+   //var xxx= window.location.href; 
+   
+   //var xxx= document.location.protocol + '//' + document.location.host + document.location.pathname;
+   //window.location.href = xxx;
+   //window.location.reload(true);
+   window.location.href = 'http://www.mlapplications.com/dvdplayerapp';
+   }
+   
+   function SetFirstTimeStorage()
+   {
+       if(typeof(Storage) !== "undefined") 
+       {
+           localStorage.firsttimehere = '-';
+       }
+   }
+   
+   
+   
+   function checkStorage() {
+       if(typeof(Storage) !== "undefined") 
+       {
+           if (localStorage.firsttimehere) 
+            {
+               IsFirstTimeHere = 'false';
+           }
+           else
+           {
+               IsFirstTimeHere = 'true';	
+           }
+       }
+     
+   }
+   
+   function setCookie(cname,cvalue,exdays) {
+     var d = new Date();
+     d.setTime(d.getTime() + (exdays*24*60*60*1000));
+     var expires = "expires=" + d.toGMTString();
+     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+   }
+   
+   function getCookie(cname) {
+     var name = cname + "=";
+     var decodedCookie = decodeURIComponent(document.cookie);
+     var ca = decodedCookie.split(';');
+     for(var i = 0; i < ca.length; i++) {
+       var c = ca[i];
+       while (c.charAt(0) == ' ') {
+         c = c.substring(1);
+       }
+       if (c.indexOf(name) == 0) {
+         return c.substring(name.length, c.length);
+       }
+     }
+     return "";
+   }
+   
+   
+   function checkCookie() {
+     var user=getCookie("firsttimehere");
+     if (user != "") {
+     //  alert("Welcome again " + user);
+   IsFirstTimeHere = 'false';
+   SetFirstTimeStorage();
+     } 
+     
+   }
+   
+   function checkCookieOLD() {
+     var user=getCookie("firsttimehere");
+     if (user != "") {
+     //  alert("Welcome again " + user);
+   IsFirstTimeHere = 'false';
+     } else {
+       // user = prompt("Please enter your name:","");
+      //  if (user != "" && user != null) {
+      //    setCookie("username", user, 300);
+   IsFirstTimeHere = 'true';
+        }
+     
+   }
+   
+   function myFunctionShowNext() {
+   //alert('Here.....');
+   //var xxx= window.location.href; 
+   //window.location.href = xxx;
+   
+    document.getElementById('mycard_welcome').style.visibility = 'hidden';
+    document.getElementById('mycard_welcome').style.display = 'none';
+    document.getElementById('mycard_welcome_buttons').style.visibility = 'hidden';      
+   
+    document.getElementById('mycard_getbluray').style.visibility = 'visible';
+    document.getElementById('mycard_getbluray').style.display = 'inline';
+    document.getElementById('mycard_getbluray_buttons').style.visibility = 'visible';
+              
+   
+   }
+           function closeConnection() {
+               // Detach output channel and stop listening to responses.
+               myBrokerClient.detachDuplexOutputChannel();
+               egineconnected = false;
+           };
+   
+           function subscribe() {
+   
+               if (eginesubscribed == false) {
+   
+                 try {             
+                       //  alert('Einai sto subscribe!!!');
+               
+                       console.log('einai sot subscribe');
+                       myBrokerClient.subscribe("MyCpuUpdate");
+                       eginesubscribed = true;
+                       mySenddd('egine subscribe!!!');
+                       var toseeeend = window.outerHeight - window.innerHeight;
+                       
+                       try
+                       {
+                            if (toseeeend > 120
+                            {
+                                toseeeend = 120
+                            })
+                       }
+                       catch (err ) { }
+
+                       mySenddd('tlbrHeight:' + toseeeend);
+                       mySenddd('AreYouThere?');
+                        }
+                       catch (myerr) {
+                   //  alert('Einai sto error !!!');
+                   console.log('einai sto error');
+                     continueWithYourLife();
+                     }
+                   }
+           };
+           function continueWithYourLife() {
+
+               closeNav();
+               agnoise = 'no';
+               document.getElementById('myupperbuttons').style.visibility = 'hidden';
+               document.getElementById('myupperbuttons').style.display = 'none';
+   
+                  var tasections = document.getElementsByClassName('wsite-section');
+   
+               tasections[0].style.visibility = 'hidden';
+               tasections[0].style.display = 'none';
+   
+      
+               tasections[1].style.visibility = 'visible';
+               tasections[1].style.display = 'inline';
+   
+        var myimageurl = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/mytransparentimage.png';
+               tasections[1].style.backgroundColor = '#031843';
+             //  tasections[1].style.backgroundImage = 'url(' + myimageurl + ')';
+   
+     var myimageblue = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/myblueback.jpg';
+               var x = document.getElementsByTagName("BODY")[0];
+               x.style.backgroundImage = 'url(' + myimageblue + ')';
+   
+               
+           };
+   
+           function unsubscribe() {
+               myBrokerClient.unsubscribe("MyCpuUpdate");
+   
+               eginesubscribed = false;
+           };
+   
+           function mySenddd(the_what) {
+               ///////////////	alert('Twra Tha Steilwwwww!!!');
+               //myOutputChannel.sendMessage("Hello World.");
+               myOutputChannel.sendMessage(the_what);
+   
+               //
+               ////////////	myBrokerClient.sendmessage("MyCpuUpdate", "papariaaaaaaaa");
+           };
+   
+   
+   function myCanvasPoster(theurl) 
+   {
+     var c = document.getElementById('myCanvasPoster');
+     var ctx = c.getContext("2d");
+    // var img = document.getElementById("scream");
+    // ctx.drawImage(theimage,0,0);
+   
+   const img = new Image();
+   //img.src = "./cat.jpg";
+   img.src = theurl;
+   
+                   img.onload = () => {
+                       ctx.drawImage(img, 0, 0);
+                   }
+           };
+   
+   
+   function myCanvasSpecific(thecanvas,theimage,thetitle,theurl) 
+   {
+     var c = document.getElementById(thecanvas);
+     var ctx = c.getContext("2d");
+    // var img = document.getElementById("scream");
+    // ctx.drawImage(theimage,0,0);
+   
+   const img = new Image();
+   //img.src = "./cat.jpg";
+   img.src = theimage;
+   
+   img.onload = () => 
+   {  
+   ctx.drawImage(img, 0, 0);
+     var grd = ctx.createLinearGradient(0, 0, 70, 0);
+   grd.addColorStop(0, "#004987");
+   grd.addColorStop(1, "#004987");
+   
+   // Fill with gradient
+   ctx.fillStyle = grd;
+   ctx.fillRect(1, 1, 70, 30); 
+     
+     
+      var grd2 = ctx.createLinearGradient(0, 0, 100, 0);
+   grd2.addColorStop(0, "white");
+   grd2.addColorStop(1, "white");
+     
+     ctx.fillStyle = grd2;
+     ctx.font = "16px Arial";
+   //  ctx.fillText("Trailer", 11, 20); 
+       ctx.fillText(thetitle, 11, 20); 
+     
+     
+   //  ctx.beginPath();
+     //  ctx.moveTo(25, 25);
+       //ctx.lineTo(105, 25);
+      // ctx.lineTo(25, 105);
+      // ctx.fill();
+   
+       // Stroked triangle
+       ctx.beginPath();
+   //    ctx.moveTo(125, 125);
+     //  ctx.lineTo(125, 45);
+       //ctx.lineTo(45, 125);
+       ctx.moveTo(200, 150);
+       ctx.lineTo(200, 100);
+       ctx.lineTo(150, 150);
+   
+       ctx.closePath();
+       ctx.fillStyle = grd;
+       ctx.fill();
+   
+       ctx.fillStyle = grd2;
+   ctx.stroke();
+   
+   
+    ctx.beginPath();
+       ctx.moveTo(190, 136);
+       ctx.lineTo(180, 144);
+       ctx.lineTo(180, 128);
+       ctx.fill();
+       
+       ctx.fillStyle = grd;
+     ctx.stroke();
+       //ctx.stroke();
+   }
+     
+   
+   };
+   
+   
+   
+   function myCanvas() {
+     var c = document.getElementById("myCanvas");
+     var ctx = c.getContext("2d");
+     var img = document.getElementById("scream");
+     ctx.drawImage(img,0,0);
+     
+     var grd = ctx.createLinearGradient(0, 0, 70, 0);
+   grd.addColorStop(0, "#004987");
+   grd.addColorStop(1, "#004987");
+   
+   // Fill with gradient
+   ctx.fillStyle = grd;
+   ctx.fillRect(1, 1, 70, 30); 
+     
+     
+      var grd2 = ctx.createLinearGradient(0, 0, 100, 0);
+   grd2.addColorStop(0, "white");
+   grd2.addColorStop(1, "white");
+     
+     ctx.fillStyle = grd2;
+     ctx.font = "16px Arial";
+     ctx.fillText("Trailer", 11, 20); 
+     
+     
+   //  ctx.beginPath();
+     //  ctx.moveTo(25, 25);
+       //ctx.lineTo(105, 25);
+      // ctx.lineTo(25, 105);
+      // ctx.fill();
+   
+       // Stroked triangle
+       ctx.beginPath();
+   //    ctx.moveTo(125, 125);
+     //  ctx.lineTo(125, 45);
+       //ctx.lineTo(45, 125);
+       ctx.moveTo(200, 150);
+       ctx.lineTo(200, 100);
+       ctx.lineTo(150, 150);
+   
+       ctx.closePath();
+       ctx.fillStyle = grd;
+       ctx.fill();
+   
+       ctx.fillStyle = grd2;
+   ctx.stroke();
+   
+   
+    ctx.beginPath();
+       ctx.moveTo(190, 136);
+       ctx.lineTo(180, 144);
+       ctx.lineTo(180, 128);
+       ctx.fill();
+       
+       ctx.fillStyle = grd;
+     ctx.stroke();
+       //ctx.stroke();
+   };
+   
+           function openConnection() {
+               //    alert('Open Connection Here!!!');
+   
+   //myCanvasSpecific(thecanvas,theimage,thetitle,theurl) 
+   
+   //            myCanvasSpecific("myCanvas2", "https://m.media-amazon.com/images/M/MV5BNDAwMTdmYzAtMTBhZC00MjllLWFmY2ItZWRlODU4Y2Y5ZjE3XkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_SP330,330,0,C,0,0,0_CR65,90,200,150_PIimdb-blackband-204-14,TopLeft,0,0_PIimdb-blackband-204-28,BottomLeft,0,1_CR0,0,200,150_PIimdb-bluebutton-big,BottomRight,-1,-1_ZA,4,123,16,196,verdenab,8,255,255,255,1_ZAon%2520IMDb,4,1,14,196,verdenab,7,255,255,255,1_ZA02%253A25,164,1,14,36,verdenab,7,255,255,255,1_PIimdb-HDIconMiniWhite,BottomLeft,4,-2_ZAAvengers%253A%2520Infinity%2520War,24,138,14,176,arialbd,7,255,255,255,1_.jpg", "Trailer", ""); 
+   
+   //myCanvasSpecific("myCanvas5","https://m.media-amazon.com/images/M/MV5BNDAwMTdmYzAtMTBhZC00MjllLWFmY2ItZWRlODU4Y2Y5ZjE3XkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_SP330,330,0,C,0,0,0_CR65,90,200,150_PIimdb-blackband-204-14,TopLeft,0,0_PIimdb-blackband-204-28,BottomLeft,0,1_CR0,0,200,150_PIimdb-bluebutton-big,BottomRight,-1,-1_ZA,4,123,16,196,verdenab,8,255,255,255,1_ZAon%2520IMDb,4,1,14,196,verdenab,7,255,255,255,1_ZA02%253A25,164,1,14,36,verdenab,7,255,255,255,1_PIimdb-HDIconMiniWhite,BottomLeft,4,-2_ZAAvengers%253A%2520Infinity%2520War,24,138,14,176,arialbd,7,255,255,255,1_.jpg","Clip!","");
+   //myCanvasSpecific("myCanvas6","https://m.media-amazon.com/images/M/MV5BNDAwMTdmYzAtMTBhZC00MjllLWFmY2ItZWRlODU4Y2Y5ZjE3XkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_SP330,330,0,C,0,0,0_CR65,90,200,150_PIimdb-blackband-204-14,TopLeft,0,0_PIimdb-blackband-204-28,BottomLeft,0,1_CR0,0,200,150_PIimdb-bluebutton-big,BottomRight,-1,-1_ZA,4,123,16,196,verdenab,8,255,255,255,1_ZAon%2520IMDb,4,1,14,196,verdenab,7,255,255,255,1_ZA02%253A25,164,1,14,36,verdenab,7,255,255,255,1_PIimdb-HDIconMiniWhite,BottomLeft,4,-2_ZAAvengers%253A%2520Infinity%2520War,24,138,14,176,arialbd,7,255,255,255,1_.jpg","Clip!","");
+   //myCanvasSpecific("myCanvas7","https://m.media-amazon.com/images/M/MV5BNDAwMTdmYzAtMTBhZC00MjllLWFmY2ItZWRlODU4Y2Y5ZjE3XkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_SP330,330,0,C,0,0,0_CR65,90,200,150_PIimdb-blackband-204-14,TopLeft,0,0_PIimdb-blackband-204-28,BottomLeft,0,1_CR0,0,200,150_PIimdb-bluebutton-big,BottomRight,-1,-1_ZA,4,123,16,196,verdenab,8,255,255,255,1_ZAon%2520IMDb,4,1,14,196,verdenab,7,255,255,255,1_ZA02%253A25,164,1,14,36,verdenab,7,255,255,255,1_PIimdb-HDIconMiniWhite,BottomLeft,4,-2_ZAAvengers%253A%2520Infinity%2520War,24,138,14,176,arialbd,7,255,255,255,1_.jpg","Video","");
+   //myCanvasSpecific("myCanvas5","https://m.media-amazon.com/images/M/MV5BNDAwMTdmYzAtMTBhZC00MjllLWFmY2ItZWRlODU4Y2Y5ZjE3XkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_SP330,330,0,C,0,0,0_CR65,90,200,150_PIimdb-blackband-204-14,TopLeft,0,0_PIimdb-blackband-204-28,BottomLeft,0,1_CR0,0,200,150_PIimdb-bluebutton-big,BottomRight,-1,-1_ZA,4,123,16,196,verdenab,8,255,255,255,1_ZAon%2520IMDb,4,1,14,196,verdenab,7,255,255,255,1_ZA02%253A25,164,1,14,36,verdenab,7,255,255,255,1_PIimdb-HDIconMiniWhite,BottomLeft,4,-2_ZAAvengers%253A%2520Infinity%2520War,24,138,14,176,arialbd,7,255,255,255,1_.jpg","Trailer","");
+   
+   //myCanvas();
+               // Attach output channel and be able to send messages and receive responses.
+               myBrokerClient.attachDuplexOutputChannel(myOutputChannel);
+               egineconnected = true;
+   
+               BaleStatusLoading();
+   
+               setTimeout(function () { subscribe(); }, 2000);
+              //  setTimeout(function () { displaytextafterNEWNEW(); }, 9000);
+               /////   setTimeout(function () { myChangeBackgroundImage(); }, 4000);
+   
+               // BaleStatusLoading();
+   
+   
+   
+           };
+   
+           function onBrokerMessageReceived(brokerMessageReceivedEventArgs) {
+          //     alert('Hereeee');
+         //      var tttttttt = brokerMessageReceivedEventArgs.Message;
+          //     alert('Hereeee, tttttttt:' + tttttttt);
+   
+               // If the notified message is the CPU status update.
+               if (brokerMessageReceivedEventArgs.MessageTypeId === "MyCpuUpdate") {
+                   // Deserialize notified message content.
+                   var aValue = JSON.parse(brokerMessageReceivedEventArgs.Message);
+                   var tominima = 'here';
+                   tominima = aValue.myCommand;
+   
+                   //  alert(tominima);
+                   ////      document.getElementById('mystatustext').innerHTML += " " + tominima;
+   
+                   if (aValue.myCommand == 'clnow') {
+                       unsubscribe();
+                       myBrokerClient.detachDuplexOutputChannel();
+   
+                       window.location.replace('https://www.google.com');
+                       //   window.location.replace(');
+   
+                       //
+   
+   
+                       //window.location.href = 'https://www.google.com';
+                       //   setTimeout(function ()
+                       //   {
+                       //     var ww = window.open(window.location, '_self');
+                       //     ww.close();
+                       // }, 1000);
+                   }
+                   else if (tominima.startsWith('IparxeiDVD_Drive:')) {
+                       var tolength = 'IparxeiDVD_Drive:'.length;
+                       var itimi = tominima.substring(tolength);
+                       IparxeiDVD_Drive = itimi.toLowerCase();
+   
+   
+                       if (IparxeiDVD_Drive == 'true') {
+                           document.getElementById('mycard_nodvdfound').style.visibility = 'hidden';
+                           document.getElementById('mycard_nodvdfound').style.display = 'none';
+                       }
+   
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... IparxeiDVD_Drive:' + itimi.toLowerCase();
+                   }
+                   else if (tominima.startsWith('toName:')) {
+                       var tolength = 'toName:'.length;
+                       var itimi = tominima.substring(tolength);
+                       toName = itimi;
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... toName:' + itimi;
+                   }
+                   else if (tominima.startsWith('toIsReady:')) {
+                       var tolength = 'toIsReady:'.length;
+                       var itimi = tominima.substring(tolength);
+                       toIsReady = itimi.toLowerCase();
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... toIsReady:' + itimi.toLowerCase();
+                   }
+                   else if (tominima.startsWith('toDriveFormat:')) {
+                       var tolength = 'toDriveFormat:'.length;
+                       var itimi = tominima.substring(tolength);
+                       toDriveFormat = itimi;
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... toDriveFormat:' + itimi;
+                   }
+                   else if (tominima.startsWith('toDriveType:')) {
+                       var tolength = 'toDriveType:'.length;
+                       var itimi = tominima.substring(tolength);
+                       toDriveType = itimi;
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... toDriveType:' + itimi;
+                   }
+                   else if (tominima.startsWith('toVolumeLabel:')) {
+                       var tolength = 'toVolumeLabel:'.length;
+                       var itimi = tominima.substring(tolength);
+                       toVolumeLabel = itimi;
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... toVolumeLabel:' + itimi;
+                   }
+                   else if (tominima.startsWith('toTotalSize:')) {
+                       var tolength = 'toTotalSize:'.length;
+                       var itimi = tominima.substring(tolength);
+                       toTotalSize = itimi;
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... toTotalSize:' + itimi;
+                   }
+                   else if (tominima.startsWith('toAvailableFreeSpace:')) {
+                       var tolength = 'toAvailableFreeSpace:'.length;
+                       var itimi = tominima.substring(tolength);
+                       toAvailableFreeSpace = itimi;
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... toAvailableFreeSpace:' + itimi;
+                   }
+                   else if (tominima.startsWith('toTotalFreeSpace:')) {
+                       var tolength = 'toTotalFreeSpace:'.length;
+                       var itimi = tominima.substring(tolength);
+                       toTotalFreeSpace = itimi;
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... toTotalFreeSpace:' + itimi;
+                   }
+                   else if (tominima.startsWith('toYear:')) {
+                       var tolength = 'toYear:'.length;
+                       var itimi = tominima.substring(tolength);
+                       toYear = itimi;
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... toYear:' + itimi;
+                   }
+                   else if (tominima.startsWith('toMediaType:')) {
+                       var tolength = 'toMediaType:'.length;
+                       var itimi = tominima.substring(tolength);
+                       toMediaType = itimi;
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... toMediaType:' + itimi;
+                   }
+                   else if (tominima.startsWith('TiGrafwAudioCD_DiscID:')) {
+                       var tolength = 'TiGrafwAudioCD_DiscID:'.length;
+                       var itimi = tominima.substring(tolength);
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... TiGrafwAudioCD_DiscID:' + itimi;
+                   }
+                   else if (tominima.startsWith('TiGrafwAudioCD_FreeDBID:')) {
+                       var tolength = 'TiGrafwAudioCD_FreeDBID:'.length;
+                       var itimi = tominima.substring(tolength);
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... TiGrafwAudioCD_FreeDBID:' + itimi;
+                   }
+                   else if (tominima.startsWith('TiGrafwAudioCD_NumOfFiles:')) {
+                       var tolength = 'TiGrafwAudioCD_NumOfFiles:'.length;
+                       var itimi = tominima.substring(tolength);
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... TiGrafwAudioCD_NumOfFiles:' + itimi;
+                   }
+                   else if (tominima.startsWith('TiGrafwAudioCD_XBOX_ServicesURL:')) {
+                       var tolength = 'TiGrafwAudioCD_XBOX_ServicesURL:'.length;
+                       var itimi = tominima.substring(tolength);
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... TiGrafwAudioCD_XBOX_ServicesURL:' + itimi;
+                   }
+                   else if (tominima.startsWith('toTotalNumOfFiles:')) {
+                       var tolength = 'toTotalNumOfFiles:'.length;
+                       var itimi = tominima.substring(tolength);
+                       toTotalNumOfFiles = itimi;
+                       document.getElementById('DVDSTATISTICS_GRID_LabelFiles').innerHTML = toTotalNumOfFiles;
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... TiGrafwAudioCD_XBOX_ServicesURL:' + itimi;
+                   }
+                   else if (tominima.startsWith('toTotalNumOfMediaFiles:')) {
+                       var tolength = 'toTotalNumOfMediaFiles:'.length;
+                       var itimi = tominima.substring(tolength);
+                       toTotalNumOfMediaFiles = itimi;
+                       document.getElementById('DVDSTATISTICS_GRID_LabelMediaFiles').innerHTML = toTotalNumOfFiles;
+   
+                       // DVDSTATISTICS_GRID_LabelFiles
+                       // DVDSTATISTICS_GRID_LabelMediaFiles
+                       //document.getElementById('mystatustext').innerHTML += 'Irthe.... TiGrafwAudioCD_XBOX_ServicesURL:' + itimi;
+                   }
+                   else if (tominima.startsWith('ContinueWithTheRest')) {
+                       //var tolength = 'TiGrafwAudioCD_XBOX_ServicesURL:'.length;
+                       //var itimi = tominima.substring(tolength);
+                       //document.getElementById('mystatustext').innerHTML += ' .. ContinueWithTheRest:';
+                       ContinueWithTheRest();
+                   }
+                   /*         var toTotalNumOfFiles = '';
+       var toTotalNumOfMediaFiles = '';
+   */
+   
+                   else if (tominima.startsWith('ImHere')) {
+                       //alert('Hereeee');
+                       MakeTheUI_ForWeb();
+                       mySenddd('ReadDVD');
+                   }
+                   else if (tominima.startsWith('mycard_dvdmovie_info:visibl')) {
+                       document.getElementById('mycard_dvdmovie_info').style.visibility = 'visible';
+                       document.getElementById('mycard_dvdmovie_info').style.display = 'inline';
+                   }
+                   else if (tominima.startsWith('mycard_dvdmovie_info:hidd')) {
+                       document.getElementById('mycard_dvdmovie_info').style.visibility = 'hidden';
+                       document.getElementById('mycard_dvdmovie_info').style.display = 'none';
+                   } // theDVDTitle
+                   else if (tominima.startsWith('theDVDTitle:')) {
+                       var tolength = 'theDVDTitle:'.length;
+                       var itimi = tominima.substring(tolength);
+                       theDVDTitle = itimi;
+                       document.getElementById('theDVDTitle').innerHTML = theDVDTitle;
+                   }
+                   else if (tominima.startsWith('theDVDType:')) {
+                       var tolength = 'theDVDType:'.length;
+                       var itimi = tominima.substring(tolength);
+                       theDVDType = itimi;
+                       document.getElementById('theDVDType').innerHTML = theDVDType;
+                   }
+                   else if (tominima.startsWith('theDVDYear:')) {
+                       var tolength = 'theDVDYear:'.length;
+                       var itimi = tominima.substring(tolength);
+                       theDVDYear = itimi;
+                       document.getElementById('theDVDYear').innerHTML = theDVDYear;
+                   }
+                   else if (tominima.startsWith('theDVDCategory:')) {
+                       var tolength = 'theDVDCategory:'.length;
+                       var itimi = tominima.substring(tolength);
+                       theDVDCategory = itimi;
+                       document.getElementById('theDVDCategory').innerHTML = theDVDCategory;
+                   }
+                   else if (tominima.startsWith('theDVDRating:')) {
+                       var tolength = 'theDVDRating:'.length;
+                       var itimi = tominima.substring(tolength);
+                       theDVDRating = itimi;
+                       document.getElementById('theDVDRating').innerHTML = theDVDRating;
+                   }
+                   else if (tominima.startsWith('theDVDDuration:')) {
+                       var tolength = 'theDVDDuration:'.length;
+                       var itimi = tominima.substring(tolength);
+                       theDVDDuration = itimi;
+                       document.getElementById('theDVDDuration').innerHTML = theDVDDuration;
+                   }
+                   else if (tominima.startsWith('theDVDReleased:')) {
+                       var tolength = 'theDVDReleased:'.length;
+                       var itimi = tominima.substring(tolength);
+                       theDVDReleased = itimi;
+                       document.getElementById('theDVDReleased').innerHTML = theDVDReleased;
+                   }
+                   else if (tominima.startsWith('theDVDVotes:')) {
+                       var tolength = 'theDVDVotes:'.length;
+                       var itimi = tominima.substring(tolength);
+                       theDVDVotes = itimi;
+                       document.getElementById('theDVDVotes').innerHTML = theDVDVotes;
+                   }
+                   else if (tominima.startsWith('theDVDAges:')) {
+                       var tolength = 'theDVDAges:'.length;
+                       var itimi = tominima.substring(tolength);
+                       theDVDAges = itimi;
+                       document.getElementById('theDVDAges').innerHTML = theDVDAges;
+                   }
+                   else if (tominima.startsWith('theDVDPoster:default')) {
+                       var tolength = 'theDVDPoster:default'.length;
+                       var itimi = tominima.substring(tolength);
+   
+                       theDVDPoster = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/mymovieposterdefault.jpg';
+                       document.getElementById('theDVDPoster').src = theDVDPoster;
+                   }
+                   else if (tominima.startsWith('theDVDPoster:')) {
+                       var tolength = 'theDVDPoster:'.length;
+                       var itimi = tominima.substring(tolength);
+                       theDVDPoster = itimi;
+                       //theDVDPoster = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/mymovieposterdefault.jpg';
+                       document.getElementById('theDVDPoster').src = theDVDPoster;
+                   }
+                   else if (tominima.startsWith('TrailerPoster:Defaul')) {
+   
+                       // thepostertrailer
+   
+                       //////////    myCanvasPoster('https://www.mlapplications.com/files/theme/appdvdplayerplus/mytransparentimage.png');
+                       ////         document.getElementById('thepostertrailer').style.visibility = 'hidden';
+                       //////     document.getElementById('thepostertrailer').style.display = 'none';
+   
+                       //       PutDefaultBackgroundMovie();
+                       theTrailerPoster = theTrailerPosterDefault;
+                       var x = document.getElementById('thepostertrailer');
+                       x.style.backgroundImage = 'url(' + theTrailerPoster + ')';
+   
+                       //                 var tasections = document.getElementsByClassName('wsite-section');
+                       //       var myimageurl = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/mytransparentimage.png';
+   
+                       //       tasections[0].style.backgroundColor = 'transparent';
+                       //       tasections[0].style.backgroundImage = 'url(' + myimageurl + ')';
+   
+                       //              var x = document.getElementsByTagName("BODY")[0];
+                       //                x.style.backgroundImage = 'url(' + theTrailerPoster + ')';
+                   }
+                   else if (tominima.startsWith('TrailerPoster:')) {
+                       var tolength = 'TrailerPoster:'.length;
+                       var itimi = tominima.substring(tolength);
+                       theTrailerPoster = itimi;
+   
+                       ////        myCanvasPoster(theTrailerPoster);
+   
+                       var x = document.getElementById('thepostertrailer');
+                       x.style.backgroundImage = 'url(' + theTrailerPoster + ')';
+                       ////   document.getElementById('thepostertrailer').style.visibility = 'visible';
+                       ////   document.getElementById('thepostertrailer').style.display = 'inline';
+   
+   
+   
+                       //             var tasections = document.getElementsByClassName('wsite-section');
+                       //     var myimageurl = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/mytransparentimage.png';
+   
+                       //     tasections[0].style.backgroundColor = 'transparent';
+                       //            tasections[0].style.backgroundImage = 'url(' + myimageurl + ')';
+                       //          var x = document.getElementsByTagName("BODY")[0];
+                       //        x.style.backgroundImage = 'url(' + theTrailerPoster + ')';
+                   }
+                   // TrailerPoster:
+                   else if (tominima.startsWith('GridForTrailersALL:Hid')) {
+                       HideAllTrailers();
+                   }
+                   else if (tominima.startsWith('GridForTrailersALL:Sho')) {
+                       ShowGridTrailers();
+                   }
+                   else if (tominima.startsWith('ShowTrailer:')) {
+                       var tolength = 'ShowTrailer:'.length;
+                       var itimi = tominima.substring(tolength);
+                       // PX: ShowTrailer:myCanvas=myCanvas0&type=Trailer&vi=xx123456&thumb=https://m.media-amazon.com/images/M/MV5BNDAwMTdmYzAtMTBhZC00MjllLWFmY2ItZWRlODU4Y2Y5ZjE3XkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_SP330,330,0,C,0,0,0_CR65,90,200,150_PIimdb-blackband-204-14,TopLeft,0,0_PIimdb-blackband-204-28,BottomLeft,0,1_CR0,0,200,150_PIimdb-bluebutton-big,BottomRight,-1,-1_ZA,4,123,16,196,verdenab,8,255,255,255,1_ZAon%2520IMDb,4,1,14,196,verdenab,7,255,255,255,1_ZA02%253A25,164,1,14,36,verdenab,7,255,255,255,1_PIimdb-HDIconMiniWhite,BottomLeft,4,-2_ZAAvengers%253A%2520Infinity%2520War,24,138,14,176,arialbd,7,255,255,255,1_.jpg
+   
+                       var thethumb = myCustomGetQueryVariable(itimi, 'thumb');
+                       var thetype = myCustomGetQueryVariable(itimi, 'type');
+                       var thecanvas = myCustomGetQueryVariable(itimi, 'myCanvas');
+                       var thevi = myCustomGetQueryVariable(itimi, 'vi');
+   
+                       myCanvasSpecific(thecanvas, thethumb, thetype, thevi);
+   
+                       var theouter = thecanvas.replace('myCanvas', 'myCanvasOuter');
+                       document.getElementById(theouter).style.visibility = 'visible';
+                       document.getElementById(theouter).style.display = 'inline';
+   
+                   }
+                   else if (tominima.startsWith('URL:')) {
+                       //  ShowGridTrailers();
+                       var tolength = 'URL:'.length;
+                       var itimi = tominima.substring(tolength);
+                       //alert('itimi: ' + itimi);
+                       // myFunctionOpenUrl(itimi);
+                       var myWindow = window.open(itimi, "", "toolbar=1, menubar=1, scrollbars=1, resizable=1, width=1024, height=768");
+   
+                   }
+                   else if (tominima.startsWith('MultipleDrive:')) {
+   
+            //          alert('tominima: ' + tominima);
+                   document.getElementById('mycard_dvdmovie_info').style.visibility = 'hidden';
+                   document.getElementById('mycard_dvdmovie_info').style.display = 'none';
+                   document.getElementById('mycard_nodvdfound').style.visibility = 'hidden';
+                   document.getElementById('mycard_nodvdfound').style.display = 'none';
+                   document.getElementById('mycard_accessneeded').style.visibility = 'hidden';
+                   document.getElementById('mycard_accessneeded').style.display = 'none';
+                   document.getElementById('mycard_dvdnotready').style.visibility = 'hidden';
+                   document.getElementById('mycard_dvdnotready').style.display = 'none';
+                   document.getElementById('myidforloadingprogress').style.visibility = 'hidden';
+                   document.getElementById('myidforloadingprogress').style.display = 'none';
+   
+                       var tolength = 'MultipleDrive:'.length;
+                       var itimi = tominima.substring(tolength);
+                       toMultipleLetters = itimi;
+                       //theDVDPoster = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/mymovieposterdefault.jpg';
+                  //     document.getElementById('theDVDPoster').src = theDVDPoster;
+            //               document.getElementById('mycard_accessneeded').style.visibility = 'hidden';
+            //       document.getElementById('mycard_accessneeded').style.display = 'none';
+             //      document.getElementById('mycard_dvdnotready').style.visibility = 'hidden';
+              //     document.getElementById('mycard_dvdnotready').style.display = 'none';
+          
+   
+                       document.getElementById('DVDSTATISTICS_GRID_LabelDriveLetter').innerHTML = toMultipleLetters;
+   
+             //            alert('toMultipleLetters: ' + toMultipleLetters);
+           
+   
+                   
+                   }
+                   //theDVDType
+   
+   
+                   /*
+   localSettings.Values["WhatToReadData_0"] = IparxeiDVD_Drive;
+   localSettings.Values["WhatToReadData_1"] = toName;
+   localSettings.Values["WhatToReadData_2"] = toIsReady;
+   localSettings.Values["WhatToReadData_3"] = toDriveFormat;
+   localSettings.Values["WhatToReadData_4"] = toDriveType;
+   localSettings.Values["WhatToReadData_5"] = toVolumeLabel;
+   localSettings.Values["WhatToReadData_6"] = toTotalSize;
+   localSettings.Values["WhatToReadData_7"] = toAvailableFreeSpace;
+   localSettings.Values["WhatToReadData_8"] = toTotalFreeSpace;
+   localSettings.Values["WhatToReadData_9"] = toYear;
+   localSettings.Values["WhatToReadData_10"] = toMediaType;
+   localSettings.Values["WhatToReadData_11"] = TiGrafwAudioCD_DiscID;
+   localSettings.Values["WhatToReadData_12"] = TiGrafwAudioCD_FreeDBID;
+   localSettings.Values["WhatToReadData_13"] = TiGrafwAudioCD_NumOfFiles;
+   localSettings.Values["WhatToReadData_14"] = TiGrafwAudioCD_XBOX_ServicesURL;
+                    */
+                   //aValue.myCommand;
+   
+                   // Update data and draw the chart.
+                   //myLineChartData.datasets[0].data.shift();
+                   //myLineChartData.datasets[0].data.push(aValue.Usage);
+                   //myChart.Line(myLineChartData, myChartConfig);
+               }
+           };
+   
+           function myCustomGetQueryVariable(query , variable)
+   {
+         // var query = window.location.search.substring(1);
+   
+          var vars = query.split("&");
+          for (var i=0;i<vars.length;i++) {
+   
+   //alert("i:" + i );
+                  var pair = vars[i].split("=");
+                  if(pair[0] == variable){return pair[1];}
+          }
+          return(false);
+   }
+   
+           function ShowGridTrailers() {
+               document.getElementById('mycard_dvdtrailers').style.visibility = 'visible';
+               document.getElementById('mycard_dvdtrailers').style.display = 'inline';
+               
+          
+           };
+   
+           function HideAllTrailers() {
+           //    alert('Einai sto HideAllTrailers');
+               document.getElementById('mycard_dvdtrailers').style.visibility = 'hidden';
+               document.getElementById('mycard_dvdtrailers').style.display = 'none';
+   
+   document.getElementById('myCanvasOuter0').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter1').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter2').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter3').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter4').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter5').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter6').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter7').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter8').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter9').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter10').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter11').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter12').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter13').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter14').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter15').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter16').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter17').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter18').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter19').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter20').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter21').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter22').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter23').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter24').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter25').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter26').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter27').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter28').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter29').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter30').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter31').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter32').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter33').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter34').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter35').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter36').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter37').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter38').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter39').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter40').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter41').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter42').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter43').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter44').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter45').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter46').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter47').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter48').style.visibility = 'hidden';
+   document.getElementById('myCanvasOuter49').style.visibility = 'hidden';
+   
+   document.getElementById('myCanvasOuter0').style.display = 'none';
+   document.getElementById('myCanvasOuter1').style.display = 'none';
+   document.getElementById('myCanvasOuter2').style.display = 'none';
+   document.getElementById('myCanvasOuter3').style.display = 'none';
+   document.getElementById('myCanvasOuter4').style.display = 'none';
+   document.getElementById('myCanvasOuter5').style.display = 'none';
+   document.getElementById('myCanvasOuter6').style.display = 'none';
+   document.getElementById('myCanvasOuter7').style.display = 'none';
+   document.getElementById('myCanvasOuter8').style.display = 'none';
+   document.getElementById('myCanvasOuter9').style.display = 'none';
+   document.getElementById('myCanvasOuter10').style.display = 'none';
+   document.getElementById('myCanvasOuter11').style.display = 'none';
+   document.getElementById('myCanvasOuter12').style.display = 'none';
+   document.getElementById('myCanvasOuter13').style.display = 'none';
+   document.getElementById('myCanvasOuter14').style.display = 'none';
+   document.getElementById('myCanvasOuter15').style.display = 'none';
+   document.getElementById('myCanvasOuter16').style.display = 'none';
+   document.getElementById('myCanvasOuter17').style.display = 'none';
+   document.getElementById('myCanvasOuter18').style.display = 'none';
+   document.getElementById('myCanvasOuter19').style.display = 'none';
+   document.getElementById('myCanvasOuter20').style.display = 'none';
+   document.getElementById('myCanvasOuter21').style.display = 'none';
+   document.getElementById('myCanvasOuter22').style.display = 'none';
+   document.getElementById('myCanvasOuter23').style.display = 'none';
+   document.getElementById('myCanvasOuter24').style.display = 'none';
+   document.getElementById('myCanvasOuter25').style.display = 'none';
+   document.getElementById('myCanvasOuter26').style.display = 'none';
+   document.getElementById('myCanvasOuter27').style.display = 'none';
+   document.getElementById('myCanvasOuter28').style.display = 'none';
+   document.getElementById('myCanvasOuter29').style.display = 'none';
+   document.getElementById('myCanvasOuter30').style.display = 'none';
+   document.getElementById('myCanvasOuter31').style.display = 'none';
+   document.getElementById('myCanvasOuter32').style.display = 'none';
+   document.getElementById('myCanvasOuter33').style.display = 'none';
+   document.getElementById('myCanvasOuter34').style.display = 'none';
+   document.getElementById('myCanvasOuter35').style.display = 'none';
+   document.getElementById('myCanvasOuter36').style.display = 'none';
+   document.getElementById('myCanvasOuter37').style.display = 'none';
+   document.getElementById('myCanvasOuter38').style.display = 'none';
+   document.getElementById('myCanvasOuter39').style.display = 'none';
+   document.getElementById('myCanvasOuter40').style.display = 'none';
+   document.getElementById('myCanvasOuter41').style.display = 'none';
+   document.getElementById('myCanvasOuter42').style.display = 'none';
+   document.getElementById('myCanvasOuter43').style.display = 'none';
+   document.getElementById('myCanvasOuter44').style.display = 'none';
+   document.getElementById('myCanvasOuter45').style.display = 'none';
+   document.getElementById('myCanvasOuter46').style.display = 'none';
+   document.getElementById('myCanvasOuter47').style.display = 'none';
+   document.getElementById('myCanvasOuter48').style.display = 'none';
+   document.getElementById('myCanvasOuter49').style.display = 'none';
+   
+           };
+           function PutDefaultBackgroundMovie() {
+   
+               var myimageblue = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/myblueback.jpg';
+               var x = document.getElementsByTagName("BODY")[0];
+               x.style.backgroundImage = 'url(' + myimageblue + ')';
+   
+           };
+   
+           function ContinueWithTheRest() {
+   
+               var thegraphic = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/usercdgraphic.jpg';
+   
+               if (toMediaType == 'Unknown') {
+                       thegraphic = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/unknowngraphic.jpg';
+                       document.getElementById('graphicfordisctype').src = thegraphic;
+           
+               }
+               else if (toMediaType == 'VideoBD') {
+                     thegraphic = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/bluraygraphic.jpg';
+                       document.getElementById('graphicfordisctype').src = thegraphic;
+     
+               } 
+               else if (toMediaType == 'VideoDVD') {
+                     thegraphic = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/dvdgraphic.jpg';
+                       document.getElementById('graphicfordisctype').src = thegraphic;
+     
+               } 
+               else if (toMediaType == 'VideoCD') {
+                     thegraphic = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/vcdgraphic.jpg';
+                       document.getElementById('graphicfordisctype').src = thegraphic;
+     
+               } 
+               else if (toMediaType == 'AudioCD') {
+                     thegraphic = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/audiocdgraphic.jpg';
+                       document.getElementById('graphicfordisctype').src = thegraphic;
+     
+               } 
+                
+               closeNav();
+   
+               document.getElementById('dvdstatistics').style.visibility = 'hidden';
+               document.getElementById('dvdstatistics').style.display = 'none';
+               //  BorderForLoadingScanning.Visibility = Visibility.Collapsed;
+               //alert('Here !!! and IparxeiDVD_Drive: ' + IparxeiDVD_Drive);
+               document.getElementById('myidforloadingprogress').style.visibility = 'hidden';
+               document.getElementById('myidforloadingprogress').style.display = 'none';
+   
+           if (IsFirstTimeHere == 'true')
+           {
+                   document.getElementById('mycard_welcome').style.visibility = 'visible';
+                   document.getElementById('mycard_welcome').style.display = 'inline';
+                   document.getElementById('mycard_welcome_buttons').style.visibility = 'visible';
+           }
+           else if (IparxeiDVD_Drive == 'false') {
+                   //alert('IparxeiDVD_Drive == false');
+                   document.getElementById('mycard_dvdmovie_info').style.visibility = 'hidden';
+                   document.getElementById('mycard_dvdmovie_info').style.display = 'none';
+                   document.getElementById('mycard_nodvdfound').style.visibility = 'visible';
+                   document.getElementById('mycard_nodvdfound').style.display = 'inline';
+               document.getElementById('mycard_nodvdfound_button').style.visibility = 'visible';
+               
+   
+                   document.getElementById('mycard_accessneeded').style.visibility = 'hidden';
+                   document.getElementById('mycard_accessneeded').style.display = 'none';
+                   document.getElementById('mycard_dvdnotready').style.visibility = 'hidden';
+                   document.getElementById('mycard_dvdnotready').style.display = 'none';
+                   document.getElementById('myidforloadingprogress').style.visibility = 'hidden';
+                   document.getElementById('myidforloadingprogress').style.display = 'none';
+                   //alert('IparxeiDVD_Drive == false BBBB');
+                   //    document.getElementById('DVDSTATISTICS_GRID_LabelDriveLetter').style.display = 'none';
+   
+   
+               }
+               else if (toIsReady == 'false') {
+                   document.getElementById('mycard_dvdmovie_info').style.visibility = 'hidden';
+                   document.getElementById('mycard_dvdmovie_info').style.display = 'none';
+                   document.getElementById('mycard_nodvdfound').style.visibility = 'hidden';
+                   document.getElementById('mycard_nodvdfound').style.display = 'none';
+                   document.getElementById('mycard_accessneeded').style.visibility = 'hidden';
+                   document.getElementById('mycard_accessneeded').style.display = 'none';
+                   document.getElementById('mycard_dvdnotready').style.visibility = 'visible';
+                   document.getElementById('mycard_dvdnotready').style.display = 'inline';
+                   document.getElementById('mycard_dvdnotready_button').style.visibility = 'visible';
+   
+   
+   
+                   document.getElementById('myidforloadingprogress').style.visibility = 'hidden';
+                   document.getElementById('myidforloadingprogress').style.display = 'none';
+   
+                   document.getElementById('DVDSTATISTICS_GRID_LabelDriveLetter').innerHTML = toName;
+   
+               }
+               else { // The Drive has a disc and it is ready!
+                   if (toIsReady == 'true') {
+                       document.getElementById('DVDSTATISTICS_GRID_LabelDriveLetter').innerHTML = toName;
+   
+                       document.getElementById('dvdstatistics').style.visibility = 'visible';
+                       document.getElementById('dvdstatistics').style.display = 'inline';
+                       document.getElementById('ttItsReady').innerHTML = "Ready!!";
+                       document.getElementById('DVDSTATISTICS_GRID_LabelSize').innerHTML = toTotalSize;
+                       document.getElementById('DVDSTATISTICS_GRID_LabelFreeSpace').innerHTML = toTotalFreeSpace;
+                       //     document.getElementById('DVDSTATISTICS_GRID_LabelFiles').innerHTML =
+                       //      document.getElementById('DVDSTATISTICS_GRID_LabelMediaFiles').innerHTML =
+   
+   
+                       if (toMediaType == 'AudioCD') {
+   
+                       }
+                       else if (toMediaType == 'VideoDVD') {
+                           document.getElementById('labelforplaydvdtype').innerHTML = "Play DVD Movie";
+                           document.getElementById('labelforblurayoption').style.visibility = 'hidden';
+                           document.getElementById('labelforblurayoption').style.display = 'none';
+    
+                           document.getElementById('pathforvcd').visibility = 'hidden';
+                           document.getElementById('pathfordvd').visibility = 'visible';
+                           document.getElementById('pathforbluray').visibility = 'hidden';
+   
+                           MakeTheUI_DVDMovie();
+                       }
+                       else if (toMediaType == 'VideoCD') {
+                           document.getElementById('labelforplaydvdtype').innerHTML = "Play VCD";
+                           document.getElementById('labelforblurayoption').style.visibility = 'hidden';
+                           document.getElementById('labelforblurayoption').style.display = 'none';
+   
+                           document.getElementById('pathforvcd').visibility = 'visible';
+                           document.getElementById('pathfordvd').visibility = 'hidden';
+                           document.getElementById('pathforbluray').visibility = 'hidden';
+                           
+                            MakeTheUI_DVDMovie();
+                       }
+                            else if (toMediaType == 'VideoBD') {
+                           document.getElementById('labelforplaydvdtype').innerHTML = "Play Blu-Ray";
+                           document.getElementById('labelforblurayoption').style.visibility = 'visible';
+                           document.getElementById('labelforblurayoption').style.display = 'inline';
+              
+                            document.getElementById('pathforvcd').visibility = 'hidden';
+                           document.getElementById('pathfordvd').visibility = 'hidden';
+                           document.getElementById('pathforbluray').visibility = 'visible';
+                         
+                            MakeTheUI_DVDMovie();
+                       }
+                       
+                       // DVDSTATISTICS_GRID_LabelDriveLetter
+                   }
+               }
+           };
+   
+           function onBrokerMessageReceivedOLDDDDDD(brokerMessageReceivedEventArgs) {
+               // If the notified message is the CPU status update.
+               if (brokerMessageReceivedEventArgs.MessageTypeId === "MyCpuUpdate") {
+                   // Deserialize notified message content.
+                   var aValue = JSON.parse(brokerMessageReceivedEventArgs.Message);
+   
+                   // Update data and draw the chart.
+             //      myLineChartData.datasets[0].data.shift();
+             //      myLineChartData.datasets[0].data.push(aValue.Usage);
+             //      myChart.Line(myLineChartData, myChartConfig);
+               }
+           };
+   
+   
+           function MakeTheUI_ForWeb() {
+   
+               var tasections = document.getElementsByClassName('wsite-section');
+               var myimageurl = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/mytransparentimage.png';
+               var myimageblue = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/myblueback.jpg';
+   
+               tasections[0].style.backgroundColor = 'transparent';
+               tasections[0].style.backgroundImage = 'url(' + myimageurl + ')';
+   
+              var x = document.getElementsByTagName("BODY")[0];
+               x.style.backgroundImage = 'url(' + myimageblue + ')';
+   
+   
+           }
+   
+           function MakeTheUI_DVDMovie() {
+   
+               //   document.getElementById('myidforloadingprogress').style.visibility = 'visible';
+               //   document.getElementById('myidforloadingprogress').style.display = 'inline';
+               document.getElementById('mycard_dvdmovie_info').style.visibility = 'hidden';
+               document.getElementById('mycard_dvdmovie_info').style.display = 'none';
+               document.getElementById('mycard_nodvdfound').style.visibility = 'hidden';
+               document.getElementById('mycard_nodvdfound').style.display = 'none';
+               document.getElementById('mycard_accessneeded').style.visibility = 'hidden';
+               document.getElementById('mycard_accessneeded').style.display = 'none';
+               document.getElementById('mycard_dvdnotready').style.visibility = 'hidden';
+               document.getElementById('mycard_dvdnotready').style.display = 'none';
+               document.getElementById('myidforloadingprogress').style.visibility = 'hidden';
+               document.getElementById('myidforloadingprogress').style.display = 'none';
+   
+   
+   
+               document.getElementById('framesup').style.visibility = 'visible';
+               document.getElementById('framesup').style.display = 'inline';
+               document.getElementById('framesdown').style.visibility = 'visible';
+               document.getElementById('framesdown').style.display = 'inline';
+   
+               document.getElementById('mycard_dvdmovie').style.visibility = 'visible';
+               document.getElementById('mycard_dvdmovie').style.display = 'inline';
+               // mycard_dvdmovie_info
+               document.getElementById('mycard_dvdmovie_info').style.visibility = 'hidden';
+               document.getElementById('mycard_dvdmovie_info').style.display = 'none';
+   
+        //////////       alert('Im going to change the background!!!!');
+               //var toidtoumystatustext = document.getElementById('mystatustext');
+               //document.getElementsByClassName("square");
+               var tasections = document.getElementsByClassName('wsite-section');
+   
+               //   alert('plithos:' + tasections.length);
+   
+   
+               //var myimageurl = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/myblueback.jpg';
+               //alert('Mexri stigmis: ' + tasections[0].style.backgroundImage);
+               //tasections[0].style.backgroundImage = 'url(' + myimageurl + ')';
+   
+   
+   
+               var myimageurl = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/mytransparentimage.png';
+               tasections[0].style.backgroundColor = 'transparent';
+               tasections[0].style.backgroundImage = 'url(' + myimageurl + ')';
+   
+               var myimageblue = 'https://www.mlapplications.com/files/theme/appdvdplayerplus/myblueback.jpg';
+               var x = document.getElementsByTagName("BODY")[0];
+               x.style.backgroundImage = 'url(' + myimageblue + ')';
+   
+               //var thenew= document.getElementsByClassName('content-wrap');
+               //alert('here2...');
+   
+               //alert('here...' + thenew.style.background);
+               //thenew.style.background = 'transparent';
+               //thenew.style["background-color"] = 'transparent';
+   
+   
+               // "url(" + imageUrl + ")"
+               //    tasections[0].style.backgroundImage = url('https://image.tmdb.org/t/p/w780/fudEG1VUWuOqleXv6NwCExK0VLy.jpg');
+   
+               //url("../../media/examples/lizard.png");
+               //try {
+   
+               //           }
+               //         catch () {
+   
+               //       }
+               //style='background-image: url("/uploads/7/9/9/6/79962194/background-images/1630067915.jpg") ;
+   
+               //$("wsite-section").parents().css("background-color", "red");
+   
+               //var parentEls = $(toidtoumystatustext).parents()
+               //    .map(function () {
+               //        return this.tagName;
+               //    })
+   
+           };
+   
+           function BaleStatusLoading() {
+       checkCookie();
+       checkStorage();
+           openNav();
+   
+   if (IsFirstTimeHere == 'true')
+   {
+      document.getElementById('thetextloadingresources').style.visibility = 'hidden';
+      document.getElementById('thetextloadingresources').style.display = 'none';
+      document.getElementById('thetextpreparingfirsttime').style.visibility = 'visible';
+      document.getElementById('thetextpreparingfirsttime').style.display = 'inline';
+   }
+   else
+   {
+      document.getElementById('thetextloadingresources').style.visibility = 'visible';
+      document.getElementById('thetextloadingresources').style.display = 'inline';
+      document.getElementById('thetextpreparingfirsttime').style.visibility = 'hidden';
+      document.getElementById('thetextpreparingfirsttime').style.display = 'none';
+   
+       document.getElementById('mycard_welcome').style.visibility = 'hidden';
+       document.getElementById('mycard_welcome').style.display = 'none';
+       document.getElementById('mycard_getbluray').style.visibility = 'hidden';
+       document.getElementById('mycard_getbluray').style.display = 'none';
+   
+   }
+             //  mycard_dvdmovie
+               // mycard_dvdmovie
+           document.getElementById('mycard_getbluray').style.visibility = 'hidden';
+               document.getElementById('mycard_getbluray').style.display = 'none';
+   
+   
+           document.getElementById('mycard_welcome_buttons').style.visibility = 'hidden';
+               document.getElementById('mycard_getbluray').style.visibility = 'hidden';
+   
+               document.getElementById('mycard_dvdtrailers').style.visibility = 'hidden';
+               document.getElementById('mycard_dvdtrailers').style.display = 'none';
+   
+               document.getElementById('framesup').style.visibility = 'hidden';
+               document.getElementById('framesup').style.display = 'none';
+               document.getElementById('framesdown').style.visibility = 'hidden';
+               document.getElementById('framesdown').style.display = 'none';
+               
+               // mycard_dvdmovie_info
+               document.getElementById('mycard_dvdmovie_info').style.visibility = 'hidden';
+               document.getElementById('mycard_dvdmovie_info').style.display = 'none';
+   
+               document.getElementById('mycard_dvdmovie').style.visibility = 'hidden';
+               document.getElementById('mycard_dvdmovie').style.display = 'none';
+   
+               document.getElementById('mycard_nodvdfound').style.visibility = 'hidden';
+               document.getElementById('mycard_nodvdfound').style.display = 'none';
+               document.getElementById('mycard_accessneeded').style.visibility = 'hidden';
+               document.getElementById('mycard_accessneeded').style.display = 'none';
+               document.getElementById('mycard_dvdnotready').style.visibility = 'hidden';
+               document.getElementById('mycard_dvdnotready').style.display = 'none';
+               document.getElementById('myidforloadingprogress').style.visibility = 'visible';
+               document.getElementById('myidforloadingprogress').style.display = 'inline';
+   
+   
+               var tasections = document.getElementsByClassName('wsite-section');
+   
+               tasections[1].style.visibility = 'hidden';
+               tasections[1].style.display = 'none';
+   
+   
+   
+   
+           };
+       </script>
+   

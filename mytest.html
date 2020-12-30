@@ -1897,7 +1897,28 @@ function append_jsonOLD(data) {
   });
 }
 
+ 
+
+ function myFunctionfortitle() {
+ var chromeH = window.outerHeight - window.innerHeight;
+ 
+ 
+   alert("Page is loaded and chromeH:" + chromeH + ",window.innerHeight:" + window.innerHeight + ",window.outerHeight:" + window.outerHeight);
+   //document.title = "Paparia";
+   
+   var whttwrtttl = "[version:" + chromeH + "." +  window.innerHeight + "." + window.outerHeight +"] ";
+  //  var whttwrtttl = "[version:105." +  window.innerHeight + "." + window.outerHeight +"] ";
+  
+  var xx =  document.title;
+ document.title = whttwrtttl + xx;
+ 
+ //openConnection();
+ //myhdckpl();
+ }
+
 function get_json_data(){
+
+  myFunctionfortitle();
     //alert('here 1');
       // Relative URL of external json file
    //   var json_url = 'example.json';

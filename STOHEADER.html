@@ -261,11 +261,27 @@ max-width: 100%;
 
 <script>
 window.onload = function () { 
-openNav();
+
+//openNav();
 myFunctionfortitle();     
 
 }; 
-
+function myFunctionfortitle() {
+ var chromeH = window.outerHeight - window.innerHeight;
+ 
+ 
+   alert("Page is loaded and chromeH:" + chromeH + ",window.innerHeight:" + window.innerHeight + ",window.outerHeight:" + window.outerHeight);
+   //document.title = "Paparia";
+   
+   var whttwrtttl = "[version:" + chromeH + "." +  window.innerHeight + "." + window.outerHeight +"] ";
+  //  var whttwrtttl = "[version:105." +  window.innerHeight + "." + window.outerHeight +"] ";
+  
+  var xx =  document.title;
+ document.title = whttwrtttl + xx;
+ 
+ //openConnection();
+ //myhdckpl();
+ }
 </script>
 
 
