@@ -76,7 +76,9 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="css/mymaterialize.min.css"  media="screen,projection"/>
-      
+    
+        <link type="text/css" rel="stylesheet" href="css/addtohomescreen.css"  media="screen,projection"/>
+    
         <!--Main Stylesheet-->
     <link rel="stylesheet" type="text/css" media="screen" href="css/app.css" />
 
@@ -87,7 +89,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src='js/mymaterialize.js'></script>
 
-     
+    <script src='js/addtohomescreen.js'></script>
+    <script>
+      addToHomescreen({
+          //options
+      });
+      </script>
+   
 <!-- register service worker -->
 <script>
   if ('serviceWorker' in navigator)
