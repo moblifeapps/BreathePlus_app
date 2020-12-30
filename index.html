@@ -18,6 +18,27 @@
     <meta name="description" content="This script checks your Date of Birth and detects the Day of the Week you were born.">
 --> <!--Open Graph-->
 
+<link rel="stylesheet" type="text/css" href="style/addtohomescreen.css">
+<script src="js/addtohomescreen.js"></script>
+<script>
+  addToHomescreen({
+    onShow: function () {
+        console.log( "showing" );
+    },
+    onInit: function () {
+        console.log( "initializing" );
+    },
+    onAdd: function () {
+        console.log( "adding" );
+    },
+    onInstall: function () {
+        console.log( "Installing" );
+    },
+    onCancel: function () {
+        console.log( "Cancelling" );
+    }
+  });
+  </script>
 <!-- Google analytics -->
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90560135-1"></script>
