@@ -27,7 +27,7 @@
             usernameTradingView = 'YourTradingViewUserName'
             passwordTradingView = 'YourTradingViewPassword'
             my_trading_view=TvDatafeed(username=usernameTradingView,password=passwordTradingView)
-            btc_usdtperp_data=tv.get_hist(symbol,'BINANCE',Interval.in_1_minute,n_bars=100)
+            btc_usdtperp_data=my_trading_view.get_hist(symbol,'BINANCE',Interval.in_1_minute,n_bars=100)
             
             fig, ax = plt.subplots()
             # x axis
