@@ -23,7 +23,8 @@
             # importing the matplotlib library
             import matplotlib.pyplot as plt
             from tvDatafeed import TvDatafeed,Interval 
-            
+            import logging
+            logging.getLogger("tvDatafeed").setLevel(logging.CRITICAL  )
             usernameTradingView = 'YourTradingViewUserName'
             passwordTradingView = 'YourTradingViewPassword'
             symbol = 'BTCUSDTPERP'
