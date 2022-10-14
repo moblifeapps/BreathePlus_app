@@ -13,7 +13,7 @@
         <py-script>print("Hello, World!")</py-script>
         <py-env>
             - matplotlib
-    </py-env>
+        </py-env>
    
     <div id="matplotlib-lineplot"></div>
         <py-script output="matplotlib-lineplot">
@@ -21,14 +21,6 @@
            
             # importing the matplotlib library
             import matplotlib.pyplot as plt
-        #    from tvDatafeed import TvDatafeed,Interval 
-        #    import logging
-        #    logging.getLogger("tvDatafeed").setLevel(logging.CRITICAL  )
-        #    usernameTradingView = 'YourTradingViewUserName'
-        #    passwordTradingView = 'YourTradingViewPassword'
-        #    symbol = 'BTCUSDTPERP'
-        #    my_trading_view=TvDatafeed(username=usernameTradingView,password=passwordTradingView)
-        #    btc_usdtperp_data=my_trading_view.get_hist(symbol,'BINANCE',Interval.in_1_minute,n_bars=100)
             
             fig, ax = plt.subplots()
             # x axis
